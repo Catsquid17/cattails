@@ -116,6 +116,12 @@ footer {
 footer div {
   margin-left: var(--global-margin);
 }
+#nexus:hover path, #proboards:hover path {
+  fill: var(--bs-body-bg) !important
+}
+#cat-svg {
+  margin-right: 10px;
+}
 
 /* List Group */
 #first-recent-mod {
@@ -171,3 +177,5 @@ footer div {
 #bug-button {
   margin: 1em;
 }
+
+
