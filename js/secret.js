@@ -1,10 +1,9 @@
 "use strict";
 
 const start = document.querySelector("#start");
-const settingsRadio = document.querySelector("#start");
 const left = document.querySelector("#left-section");
 const right = document.querySelector("#right-section");
-let settings = {"one": null, "two": null, "three": null};
+let globalSettings = {"one": null, "two": null, "three": null};
 let currentPage = 1;
 
 start.addEventListener("click", () => toPage2());
@@ -13,9 +12,9 @@ const updateData = () => {
   if (currentPage == 2) {
     //making this code react to how many settings there are is way too much work for a program that will have maybe four
     //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
-    settings.one = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
-    settings.two = document.querySelector('[name="setting-2"]:checked').value
-    settings.three = document.querySelector('[name="setting-3"]:checked').value
+    globalSettings.one = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
+    globalSettings.two = document.querySelector('[name="setting-2"]:checked').value
+    globalSettings.three = document.querySelector('[name="setting-3"]:checked').value
     }
 }
 
@@ -61,11 +60,11 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
-      console.log(`settings.one: ${settings.one}, settings.two: ${settings.two}, settings.three: ${settings.three}, numOptions: ${numOptions}, numSettings: ${numSettings}, option: ${option}, `);
-      if (settings.one == null && numOptions == 0) {
+      console.log(`settings.one: ${globalSettings.one}, settings.two: ${globalSettings.two}, settings.three: ${globalSettings.three}, numOptions: ${numOptions}, numSettings: ${numSettings}, option: ${option}, `);
+      if (globalSettings.one == null && numOptions == 0) {
         opt.checked = true; //first option should be selected by default
       }
-      else if ((numSettings == 1 && option == settings.one) || (numSettings == 2 && option == settings.two) || (numSettings == 3 && option == settings.three)) {
+      else if ((numSettings == 1 && option == globalSettings.one) || (numSettings == 2 && option == globalSettings.two) || (numSettings == 3 && option == globalSettings.three)) {
         //if we're looking at setting1 and setting1 = the name of this option, make it checked
         opt.checked = true;
       }
@@ -90,7 +89,7 @@ const toPage2 = () => {
 
 const toPage3 = () => {
   updateData(); //this goes here because the original setting values are null, if we made it so the values update on change, they wouldnt store the value if the user didnt change anything
-  console.log(settings)
+  console.log(globalSettings)
   currentPage = 3;
   left.innerHTML = "";
   right.innerHTML = "";
