@@ -44,6 +44,7 @@ const toPage2 = () => {
 
       right.appendChild(opt);
       right.appendChild(label);
+      console.log(br)
       right.appendChild(br);
       numOptions++;
     }
