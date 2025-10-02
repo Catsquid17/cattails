@@ -20,7 +20,7 @@ const toPage2 = () => {
   let settings = [["Cat", "Dog", "Horse"], ["One", "Two"], ["Yes", "No"]];
   let numSettings = 0;
 
-  for (let setting in settings) {
+  for (let setting of settings) {
     console.log(`setting: ${setting}`)
     numSettings++;
     let input = document.createElement('input');
@@ -28,7 +28,7 @@ const toPage2 = () => {
     input.setAttribute("name", `setting-${numSettings}`);
 
     let numOptions = 0;
-    for (let option in setting) {
+    for (let option of setting) {
       console.log(`option: ${option}`)
       
       let opt = input.cloneNode(true);
