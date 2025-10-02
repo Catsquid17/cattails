@@ -183,6 +183,9 @@ footer div {
   font-style: italic;
   font-size: 14px;
 }
+#secret-container h1 {
+  margin-bottom: 0.75em;
+}
 
 
 
