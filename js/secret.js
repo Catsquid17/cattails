@@ -8,15 +8,14 @@ let settings = {"one": null, "two": null, "three": null};
 let currentPage = 1;
 
 start.addEventListener("click", () => toPage2());
-document.addEventListener("change", () => updateData());
 
 const updateData = () => {
   if (currentPage == 2) {
     //making this code react to how many settings there are is way too much work for a program that will have maybe four
-    settings.one = setting1
-    settings.two = setting2
-    settings.three = setting3
-    console.log(settings)
+    //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
+    settings.one = document.querySelector('[name="setting-1"]:checked') //will select whatever option is selected in the set of options named "setting-1"
+    settings.two = document.querySelector('[name="setting-2"]:checked')
+    settings.three = document.querySelector('[name="setting-2"]:checked')
     }
 }
 
@@ -45,7 +44,7 @@ const toPage2 = () => {
     right.appendChild(settingText);
     
     input.setAttribute("type", "radio");
-    input.setAttribute("name", `setting${numSettings}`);
+    input.setAttribute("name", `setting-${numSettings}`);
 
     let numOptions = 0;
     for (let option of setting) {
@@ -63,11 +62,36 @@ const toPage2 = () => {
       right.appendChild(lineBreak);
       numOptions++;
     }
+    createButton("2to3");
+    button = document.querySelector("#2to3");
+    button.addEventListener("click", () => toPage3());
+
   }
   
 }
 
+const toPage3 = () => {
+  updateData(); //this goes here because the original setting values are null, if we made it so the values update on change, they wouldnt store the value if the user didnt change anything
+  console.log(settings)
+  currentPage = 3;
+}
+
+const createButton = (id) => {
+    let button = document.createElement('button');
+    button.setAttribute("type", "button");;
+    button.classList.add("btn");
+    button.classList.add("btn-primary");
+    button.classList.add("btn-lg");
+    button.setAttribute("id", id);
+    return button; //.cloneNode(true) ?? not sure yet
+}
 //element.innerHTML = "blah";
 //element.classList.add()
 //element.setAttribute("href", "hi.com")
 //parent = element.parentNode
+
+//thoughts:
+//need to establish setting defaults; though i guess i can just list those options first
+//is my page-making methodology okay or will there be errors because elements are re-created if you go back a page?
+//  will setting selections persist if you swap pages?
+//im going to want more meaningful setting names than one/two/three, but i can just update the settings definition and key-value assignment once i have those names. idc about the html page names
