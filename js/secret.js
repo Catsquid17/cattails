@@ -63,8 +63,12 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
-      if (numOptions == 0) {
-        opt.checked = true; //first option should be default
+      if (if settings.one == null && numOptions == 0) {
+        opt.checked = true; //first option should be selected by default
+      }
+      elif ((numSettings == 1 && option == settings.one) || (numSettings == 2 && option == settings.two) || (numSettings == 3 && option == settings.three)) {
+        //if we're looking at setting1 and setting1 = the name of this option, make it checked
+        opt.checked = true;
       }
       
       let label = document.createElement('label');
@@ -104,7 +108,7 @@ const createButton = (id, text) => {
     //button.classList.add("btn-lg");
     button.setAttribute("id", id);
     button.innerHTML = text;
-    return button; //.cloneNode(true) ?? not sure yet
+    return button;
 }
 //element.innerHTML = "blah";
 //element.classList.add()
@@ -112,6 +116,6 @@ const createButton = (id, text) => {
 //parent = element.parentNode
 
 //thoughts:
-//is my page-making methodology okay or will there be errors because elements are re-created if you go back a page?
+//is my page-making methodology okay or will there be errors because elements are re-created if you go back a page? => seems to be fine?
 //  will setting selections persist if you swap pages?
 //im going to want more meaningful setting names than one/two/three, but i can just update the settings definition and key-value assignment once i have those names. idc about the html page names
