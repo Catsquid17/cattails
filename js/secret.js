@@ -8,8 +8,9 @@ start.addEventListener("click", () => toPage2());
 
 const toPage2 = () => {
   left.innerHTML = "";
-  heading = document.createElement('h2');
-  paragraph = document.createElement('p');
+  //left.classList.remove('text-center'); will be useful for other pages but i think i like the center here
+  let heading = document.createElement('h2');
+  let paragraph = document.createElement('p');
   heading.innerHTML = "Settings";
   paragraph.innerHTML = "An explanation of what this page does. Lorem ipsum lorem ipsum lorem ipsum or whatever";
   left.appendChild(heading);
@@ -19,23 +20,28 @@ const toPage2 = () => {
   let settings = [["Cat", "Dog", "Horse"], ["One", "Two"], ["Yes", "No"]];
   let numSettings = 0;
 
-  for (setting in settings) {
+  for (let setting of settings) {
+    console.log(`setting: ${setting}`)
     numSettings++;
-    input = document.createElement('input');
+    let input = document.createElement('input');
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
 
-    for (option in setting) {
-      opt = input.cloneNode(true);
+    let numOptions = 0;
+    for (let option of setting) {
+      console.log(`option: ${option}`)
+      
+      let opt = input.cloneNode(true);
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
       
-      label = document.createElement('label');
+      let label = document.createElement('label');
       label.setAttribute("for", option.toLowerCase());
       label.innerHTML = option;
 
       right.appendChild(opt);
       right.appendChild(label);
+      numOptions++;
     }
   }
   
