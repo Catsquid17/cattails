@@ -173,9 +173,16 @@ footer div {
   margin-bottom: 1em;
 }
 
-/*modal for bugs*/
+/* modal for bugs */
 #bug-button {
   margin: 1em;
 }
+
+/* secret page */
+.disclaimer {
+  font-style: italic;
+  font-size: 14px;
+}
+
 
 
