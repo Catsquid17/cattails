@@ -1,12 +1,27 @@
 "use strict";
 
 const start = document.querySelector("#start");
+const settingsRadio = document.querySelector("#start");
 const left = document.querySelector("#left-section");
 const right = document.querySelector("#right-section");
+let settings = {"one": null, "two": null, "three": null};
+let currentPage = 1;
 
 start.addEventListener("click", () => toPage2());
+document.addEventListener("change", () => updateData());
+
+const updateData = () => {
+  if (currentPage == 2) {
+    //making this code react to how many settings there are is way too much work for a program that will have maybe four
+    settings.one = setting1
+    settings.two = setting2
+    settings.three = setting3
+    console.log(settings)
+    }
+}
 
 const toPage2 = () => {
+  currentPage = 2;
   left.innerHTML = "";
   //left.classList.remove('text-center'); will be useful for other pages but i think i like the center here
   let heading = document.createElement('h2');
@@ -30,7 +45,7 @@ const toPage2 = () => {
     right.appendChild(settingText);
     
     input.setAttribute("type", "radio");
-    input.setAttribute("name", `setting-${numSettings}`);
+    input.setAttribute("name", `setting${numSettings}`);
 
     let numOptions = 0;
     for (let option of setting) {
