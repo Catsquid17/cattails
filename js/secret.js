@@ -26,7 +26,7 @@ const toPage2 = () => {
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
 
-    numOptions = 0;
+    let numOptions = 0;
     console.log(`setting: ${setting[numSettings-1]}`)
     for (let option in setting[numSettings-1]) {
       console.log(`option: ${option}`)
