@@ -62,9 +62,11 @@ const toPage2 = () => {
       right.appendChild(lineBreak);
       numOptions++;
     }
-    createButton("2to3");
-    button = document.querySelector("#2to3");
+    button = createButton("2to3");
     button.addEventListener("click", () => toPage3());
+    right.appendChild(button)
+    //button = document.querySelector("#2to3");
+    
 
   }
   
