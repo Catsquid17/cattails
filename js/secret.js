@@ -1,10 +1,9 @@
 "use strict";
 
 const start = document.querySelector("#start");
-const settingsRadio = document.querySelector("#start");
 const left = document.querySelector("#left-section");
 const right = document.querySelector("#right-section");
-let settings = {"one": null, "two": null, "three": null};
+let globalSettings = {"one": null, "two": null, "three": null};
 let currentPage = 1;
 
 start.addEventListener("click", () => toPage2());
@@ -13,11 +12,9 @@ const updateData = () => {
   if (currentPage == 2) {
     //making this code react to how many settings there are is way too much work for a program that will have maybe four
     //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
-    settings.one = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
-    settings.two = document.querySelector('[name="setting-2"]:checked').value
-    settings.three = document.querySelector('[name="setting-3"]:checked').value
-
-    console.log(document.querySelector('[name="setting-1"]:checked'))
+    globalSettings.one = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
+    globalSettings.two = document.querySelector('[name="setting-2"]:checked').value
+    globalSettings.three = document.querySelector('[name="setting-3"]:checked').value
     }
 }
 
@@ -63,8 +60,12 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
-      if (numOptions == 0) {
-        opt.checked = true; //first option should be default
+      if (globalSettings.one == null && numOptions == 0) {
+        opt.checked = true; //first option should be selected by default
+      }
+      else if ((numSettings == 1 && option == globalSettings.one) || (numSettings == 2 && option == globalSettings.two) || (numSettings == 3 && option == globalSettings.three)) {
+        //if we're looking at setting1 and setting1 = the name of this option, make it checked
+        opt.checked = true;
       }
       
       let label = document.createElement('label');
@@ -87,7 +88,7 @@ const toPage2 = () => {
 
 const toPage3 = () => {
   updateData(); //this goes here because the original setting values are null, if we made it so the values update on change, they wouldnt store the value if the user didnt change anything
-  console.log(settings)
+  console.log(globalSettings)
   currentPage = 3;
   left.innerHTML = "";
   right.innerHTML = "";
@@ -104,7 +105,7 @@ const createButton = (id, text) => {
     //button.classList.add("btn-lg");
     button.setAttribute("id", id);
     button.innerHTML = text;
-    return button; //.cloneNode(true) ?? not sure yet
+    return button;
 }
 //element.innerHTML = "blah";
 //element.classList.add()
@@ -112,6 +113,4 @@ const createButton = (id, text) => {
 //parent = element.parentNode
 
 //thoughts:
-//is my page-making methodology okay or will there be errors because elements are re-created if you go back a page?
-//  will setting selections persist if you swap pages?
 //im going to want more meaningful setting names than one/two/three, but i can just update the settings definition and key-value assignment once i have those names. idc about the html page names
