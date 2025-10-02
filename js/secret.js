@@ -16,8 +16,6 @@ const updateData = () => {
     settings.one = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
     settings.two = document.querySelector('[name="setting-2"]:checked').value
     settings.three = document.querySelector('[name="setting-3"]:checked').value
-
-    console.log(document.querySelector('[name="setting-1"]:checked'))
     }
 }
 
@@ -63,6 +61,7 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
+      console.log(`settings.one: ${settings.one}, settings.two: ${settings.two}, settings.three: ${settings.three}, numOptions: ${numOptions}, numSettings: ${numSettings}, option: ${option}, `);
       if (settings.one == null && numOptions == 0) {
         opt.checked = true; //first option should be selected by default
       }
