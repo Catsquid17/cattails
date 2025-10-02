@@ -8,6 +8,7 @@ start.addEventListener("click", () => toPage2());
 
 const toPage2 = () => {
   left.innerHTML = "";
+  left.classList.remove('text-center'); 
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
   heading.innerHTML = "Settings";
@@ -19,13 +20,13 @@ const toPage2 = () => {
   let settings = [["Cat", "Dog", "Horse"], ["One", "Two"], ["Yes", "No"]];
   let numSettings = 0;
 
-  for (setting in settings) {
+  for (let setting in settings) {
     numSettings++;
     let input = document.createElement('input');
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
 
-    for (option in setting) {
+    for (let option in setting) {
       let opt = input.cloneNode(true);
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
