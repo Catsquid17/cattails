@@ -63,7 +63,7 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
-      if (if settings.one == null && numOptions == 0) {
+      if (settings.one == null && numOptions == 0) {
         opt.checked = true; //first option should be selected by default
       }
       elif ((numSettings == 1 && option == settings.one) || (numSettings == 2 && option == settings.two) || (numSettings == 3 && option == settings.three)) {
