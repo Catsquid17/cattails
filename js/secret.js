@@ -21,6 +21,15 @@ const updateData = () => {
     }
 }
 
+const toPage1 = () => {
+  currentPage = 1;
+  left.innerHTML = "";
+  right.innerHTML = "";
+  let button = createButton("start", "Next >");
+  button.addEventListener("click", () => toPage2());
+  right.appendChild(button);
+}
+
 const toPage2 = () => {
   currentPage = 2;
   left.innerHTML = "";
@@ -68,15 +77,23 @@ const toPage2 = () => {
       numOptions++;
     }
   }
-  let button = createButton("2to3", "Next >");
-  button.addEventListener("click", () => toPage3());
-  right.appendChild(button);
+  let backButton = createButton("2to1", "< Back");
+  backButton.addEventListener("click", () => toPage1());
+  right.appendChild(backButton);
+  let nextButton = createButton("2to3", "Next >");
+  nextButton.addEventListener("click", () => toPage3());
+  right.appendChild(nextButton);
 }
 
 const toPage3 = () => {
   updateData(); //this goes here because the original setting values are null, if we made it so the values update on change, they wouldnt store the value if the user didnt change anything
   console.log(settings)
   currentPage = 3;
+  left.innerHTML = "";
+  right.innerHTML = "";
+  let button = createButton("3to2", "< Back");
+  button.addEventListener("click", () => toPage2());
+  right.appendChild(button);
 }
 
 const createButton = (id, text) => {
