@@ -54,6 +54,9 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
+      if (numOptions == 0) {
+        opt.checked = true; //first option should be default
+      }
       
       let label = document.createElement('label');
       label.setAttribute("for", option.toLowerCase());
@@ -92,7 +95,6 @@ const createButton = (id, text) => {
 //parent = element.parentNode
 
 //thoughts:
-//need to establish setting defaults; though i guess i can just list those options first
 //is my page-making methodology okay or will there be errors because elements are re-created if you go back a page?
 //  will setting selections persist if you swap pages?
 //im going to want more meaningful setting names than one/two/three, but i can just update the settings definition and key-value assignment once i have those names. idc about the html page names
