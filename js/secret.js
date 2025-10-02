@@ -16,6 +16,8 @@ const updateData = () => {
     settings.one = document.querySelector('[name="setting-1"]:checked') //will select whatever option is selected in the set of options named "setting-1"
     settings.two = document.querySelector('[name="setting-2"]:checked')
     settings.three = document.querySelector('[name="setting-2"]:checked')
+
+    console.log(document.querySelector('[name="setting-1"]:checked'))
     }
 }
 
@@ -62,14 +64,10 @@ const toPage2 = () => {
       right.appendChild(lineBreak);
       numOptions++;
     }
-    let button = createButton("2to3");
-    button.addEventListener("click", () => toPage3());
-    right.appendChild(button)
-    //button = document.querySelector("#2to3");
-    
-
   }
-  
+  let button = createButton("2to3", "Next >");
+  button.addEventListener("click", () => toPage3());
+  right.appendChild(button);
 }
 
 const toPage3 = () => {
@@ -78,13 +76,14 @@ const toPage3 = () => {
   currentPage = 3;
 }
 
-const createButton = (id) => {
+const createButton = (id, text) => {
     let button = document.createElement('button');
     button.setAttribute("type", "button");;
     button.classList.add("btn");
     button.classList.add("btn-primary");
     button.classList.add("btn-lg");
     button.setAttribute("id", id);
+    button.innerHTML = text;
     return button; //.cloneNode(true) ?? not sure yet
 }
 //element.innerHTML = "blah";
