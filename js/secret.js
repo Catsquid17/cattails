@@ -18,19 +18,22 @@ const toPage2 = () => {
   //-----
   right.innerHTML = "";
   let settings = [["Cat", "Dog", "Horse"], ["One", "Two"], ["Yes", "No"]];
+  let settingTexts = ["Which animal?", "Which number?", "Yes or no?"];
   let numSettings = 0;
+  let br = document.createElement('br');
+  let input = document.createElement('input');
 
   for (let setting of settings) {
-    console.log(`setting: ${setting}`)
     numSettings++;
-    let input = document.createElement('input');
+    let settingText = document.createElement('p');
+    settingText.innerHTML = settingTexts[numSettings-1]
+    right.appendChild(settingText);
+    
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
 
     let numOptions = 0;
     for (let option of setting) {
-      console.log(`option: ${option}`)
-      
       let opt = input.cloneNode(true);
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
@@ -41,6 +44,7 @@ const toPage2 = () => {
 
       right.appendChild(opt);
       right.appendChild(label);
+      right.appendChild(br);
       numOptions++;
     }
   }
