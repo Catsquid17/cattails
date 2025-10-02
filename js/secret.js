@@ -8,7 +8,7 @@ start.addEventListener("click", () => toPage2());
 
 const toPage2 = () => {
   left.innerHTML = "";
-  left.classList.remove('text-center'); 
+  //left.classList.remove('text-center'); will be useful for other pages but i think i like the center here
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
   heading.innerHTML = "Settings";
@@ -21,12 +21,14 @@ const toPage2 = () => {
   let numSettings = 0;
 
   for (let setting in settings) {
+    console.log(setting)
     numSettings++;
     let input = document.createElement('input');
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
 
     for (let option in setting) {
+      console.log(option)
       let opt = input.cloneNode(true);
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
