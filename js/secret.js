@@ -35,6 +35,7 @@ const toPage2 = () => {
     let numOptions = 0;
     for (let option of setting) {
       let opt = input.cloneNode(true);
+      let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
       
@@ -44,8 +45,7 @@ const toPage2 = () => {
 
       right.appendChild(opt);
       right.appendChild(label);
-      console.log(br)
-      right.appendChild(br);
+      right.appendChild(lineBreak);
       numOptions++;
     }
   }
