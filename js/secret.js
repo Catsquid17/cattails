@@ -13,9 +13,9 @@ const updateData = () => {
   if (currentPage == 2) {
     //making this code react to how many settings there are is way too much work for a program that will have maybe four
     //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
-    settings.one = document.querySelector('[name="setting-1"]:checked') //will select whatever option is selected in the set of options named "setting-1"
-    settings.two = document.querySelector('[name="setting-2"]:checked')
-    settings.three = document.querySelector('[name="setting-2"]:checked')
+    settings.one = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
+    settings.two = document.querySelector('[name="setting-2"]:checked').value
+    settings.three = document.querySelector('[name="setting-3"]:checked').value
 
     console.log(document.querySelector('[name="setting-1"]:checked'))
     }
@@ -81,7 +81,7 @@ const createButton = (id, text) => {
     button.setAttribute("type", "button");;
     button.classList.add("btn");
     button.classList.add("btn-primary");
-    button.classList.add("btn-lg");
+    //button.classList.add("btn-lg");
     button.setAttribute("id", id);
     button.innerHTML = text;
     return button; //.cloneNode(true) ?? not sure yet
