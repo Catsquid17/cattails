@@ -66,7 +66,7 @@ const toPage2 = () => {
       if (settings.one == null && numOptions == 0) {
         opt.checked = true; //first option should be selected by default
       }
-      elif ((numSettings == 1 && option == settings.one) || (numSettings == 2 && option == settings.two) || (numSettings == 3 && option == settings.three)) {
+      else if ((numSettings == 1 && option == settings.one) || (numSettings == 2 && option == settings.two) || (numSettings == 3 && option == settings.three)) {
         //if we're looking at setting1 and setting1 = the name of this option, make it checked
         opt.checked = true;
       }
