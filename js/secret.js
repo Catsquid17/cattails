@@ -8,8 +8,8 @@ start.addEventListener("click", () => toPage2());
 
 const toPage2 = () => {
   left.innerHTML = "";
-  heading = document.createElement('h2');
-  paragraph = document.createElement('p');
+  let heading = document.createElement('h2');
+  let paragraph = document.createElement('p');
   heading.innerHTML = "Settings";
   paragraph.innerHTML = "An explanation of what this page does. Lorem ipsum lorem ipsum lorem ipsum or whatever";
   left.appendChild(heading);
@@ -21,12 +21,12 @@ const toPage2 = () => {
 
   for (setting in settings) {
     numSettings++;
-    input = document.createElement('input');
+    let input = document.createElement('input');
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
 
     for (option in setting) {
-      opt = input.cloneNode(true);
+      let opt = input.cloneNode(true);
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
       
