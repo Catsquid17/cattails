@@ -31,7 +31,7 @@ const toPage2 = () => {
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
       
-      label = document.createElement('label');
+      let label = document.createElement('label');
       label.setAttribute("for", option.toLowerCase());
       label.innerHTML = option;
 
