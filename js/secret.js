@@ -60,7 +60,6 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
-      console.log(`settings.one: ${globalSettings.one}, settings.two: ${globalSettings.two}, settings.three: ${globalSettings.three}, numOptions: ${numOptions}, numSettings: ${numSettings}, option: ${option}, `);
       if (globalSettings.one == null && numOptions == 0) {
         opt.checked = true; //first option should be selected by default
       }
@@ -114,6 +113,4 @@ const createButton = (id, text) => {
 //parent = element.parentNode
 
 //thoughts:
-//is my page-making methodology okay or will there be errors because elements are re-created if you go back a page? => seems to be fine?
-//  will setting selections persist if you swap pages?
 //im going to want more meaningful setting names than one/two/three, but i can just update the settings definition and key-value assignment once i have those names. idc about the html page names
