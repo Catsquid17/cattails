@@ -21,14 +21,14 @@ const toPage2 = () => {
   let numSettings = 0;
 
   for (let setting in settings) {
+    console.log(`setting: ${setting}`)
     numSettings++;
     let input = document.createElement('input');
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
 
     let numOptions = 0;
-    console.log(`setting: ${setting[numSettings-1]}`)
-    for (let option in setting[numSettings-1]) {
+    for (let option in setting) {
       console.log(`option: ${option}`)
       
       let opt = input.cloneNode(true);
