@@ -11,12 +11,6 @@ window.onload = function() {
 const homePage = () => {
   currentPage = "home";
   contentArea.innerHTML = "";
-  
-  let left = document.createElement('div');
-  let right = document.createElement('div');
-  left.classList.add("col-md-4");
-  left.classList.add("text-center");
-  right.classList.add("col-md-8");
 
   let image = document.createElement('img');
   let paragraph = document.createElement('p');
@@ -30,18 +24,23 @@ const homePage = () => {
   image.setAttribute("title", "Sample Image");
   image.setAttribute("width", "400");
   image.setAttribute("height", "400");
+  image.setAttribute("id", "home-img");
   start.innerHTML = "Start";
   settings.addEventListener("click", () => settingsPage());
   instructions.addEventListener("click", () => instructionsPage());
-  
-  left.appendChild(image);
-  right.appendChild(paragraph);
-  right.appendChild(start);
-  right.appendChild(settings);
-  right.appendChild(instructions);
 
-  contentArea.appendChild(left);
-  contentArea.appendChild(right);
+  let menu = document.createElement('ul');
+  menu.setAttribute("id", "button-list");
+  let buttons = [start, settings, instructions];
+  for (let button of buttons) {
+    let item = document.createElement('li');
+    item.appendChild(button);
+    menu.append(item);
+  }
+  
+  contentArea.appendChild(image);
+  contentArea.appendChild(paragraph);
+  contentArea.appendChild(menu);
 }
 
 const settingsPage = () => {
@@ -96,9 +95,7 @@ const settingsPage = () => {
   }
   
   let back = createButton("back");
-  let next = createButton("next");
   contentArea.appendChild(back);
-  contentArea.appendChild(next);
 }
 
 const instructionsPage = () => {
@@ -172,10 +169,13 @@ const pageChange = (direction) => {
     switch (currentPage) {
       case "home":
         uploadPage();
+        break;
       case "upload":
         questionsPage();
+        break;
       case "questions":
         downloadPage();
+        break;
       default:
         homePage();
     }
@@ -187,10 +187,13 @@ const pageChange = (direction) => {
         homePage();
         updateData();
         console.log(globalSettings);
+        break;
       case "questions":
         uploadPage();
+        break;
       case "download":
         questionsPage();
+        break;
       default:
         homePage();
     }

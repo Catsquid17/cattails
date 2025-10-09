@@ -191,6 +191,20 @@ footer div {
 #secret-container #content {
   min-height: 400px;
 }
+#secret-container #home-img {
+  float: left;
+  margin: 3em;
+}
+#secret-container #button-list {
+  list-style-type: none;
+}
+#secret-container #button-list li {
+  margin: 1em;
+  min-width: 150px;
+}
+
+
+
 
 
 
