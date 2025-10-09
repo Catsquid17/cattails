@@ -188,9 +188,10 @@ footer div {
 #secret-container h1 {
   margin-bottom: 0.75em;
 }
-#secret-container #left-section, #secret-container #right-section {
+#secret-container #content {
   min-height: 400px;
 }
+
 
 
 

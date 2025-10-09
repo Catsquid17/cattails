@@ -11,7 +11,7 @@ window.onload = function() {
 const homePage = () => {
   currentPage = "home";
   contentArea.innerHTML = "";
-
+  
   let left = document.createElement('div');
   let right = document.createElement('div');
   left.classList.add("col-md-4");
@@ -33,12 +33,15 @@ const homePage = () => {
   start.innerHTML = "Start";
   settings.addEventListener("click", () => settingsPage());
   instructions.addEventListener("click", () => instructionsPage());
-
+  
   left.appendChild(image);
   right.appendChild(paragraph);
   right.appendChild(start);
   right.appendChild(settings);
   right.appendChild(instructions);
+
+  contentArea.appendChild(left);
+  contentArea.appendChild(right);
 }
 
 const settingsPage = () => {
@@ -176,6 +179,7 @@ const pageChange = (direction) => {
       default:
         homePage();
     }
+  }
   //questions & dl will probably end up either having restart buttons or no buttons but for now ill keep them like this
   else if (direction == "back") {
     switch (currentPage) {
