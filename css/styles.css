@@ -105,6 +105,10 @@ body {
   --bs-btn-hover-border-color: rgb(var(--secondary-color-rgb));
   --bs-btn-hover-bg: rgb(var(--secondary-color-rgb));
 }
+.btn-primary:active {
+    background-color: #573428;
+    border-color: #573428;
+}
 
 /* Footer */
 footer {
@@ -178,7 +182,7 @@ footer div {
   margin: 1em;
 }
 
-/* secret page */
+/* secret page - maybe separate later */
 .disclaimer {
   font-style: italic;
   font-size: 14px;
@@ -186,6 +190,10 @@ footer div {
 #secret-container h1 {
   margin-bottom: 0.75em;
 }
+#secret-container {
+  min-height: 400px;
+}
+
 
 
 
