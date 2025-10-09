@@ -1,46 +1,59 @@
 "use strict";
 
-const start = document.querySelector("#start");
-const left = document.querySelector("#left-section");
-const right = document.querySelector("#right-section");
-let globalSettings = {"one": null, "two": null, "three": null};
-let currentPage = 1;
+let globalSettings = {"den": "Default", "create": "Conditionally", "parent": "Bio"};
+let currentPage = "home"; //home -> upload -> questions -> download; home -> settings; home -> instructions;
+let contentArea = document.querySelector("#content");
 
-start.addEventListener("click", () => toPage2());
+window.onload = function() {
+  homePage();
+};
 
-const updateData = () => {
-  if (currentPage == 2) {
-    //making this code react to how many settings there are is way too much work for a program that will have maybe four
-    //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
-    globalSettings.one = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
-    globalSettings.two = document.querySelector('[name="setting-2"]:checked').value
-    globalSettings.three = document.querySelector('[name="setting-3"]:checked').value
-    }
+const homePage = () => {
+  currentPage = "home";
+  contentArea.innerHTML = "";
+
+  let left = document.createElement('div');
+  let right = document.createElement('div');
+  left.classList.add("col-md-4");
+  left.classList.add("text-center");
+  right.classList.add("col-md-8");
+
+  let image = document.createElement('img');
+  let paragraph = document.createElement('p');
+  let start = createButton("next");
+  let settings = createButton("Settings");
+  let instructions = createButton("Instructions");
+
+  paragraph.innerHTML = "This is a blurb explaining all about my super cool super awesome super secret project! Oh boy I sure do hope I finish it someday. Maybe late 2026 if I'm lucky";
+  image.setAttribute("src", "https://placehold.co/400");
+  image.setAttribute("alt", "Sample Image");
+  image.setAttribute("title", "Sample Image");
+  image.setAttribute("width", "400");
+  image.setAttribute("height", "400");
+  start.innerHTML = "Start";
+  settings.addEventListener("click", () => settingsPage());
+  instructions.addEventListener("click", () => instructionsPage());
+
+  left.appendChild(image);
+  right.appendChild(paragraph);
+  right.appendChild(start);
+  right.appendChild(settings);
+  right.appendChild(instructions);
 }
 
-const toPage1 = () => {
-  currentPage = 1;
-  left.innerHTML = "";
-  right.innerHTML = "";
-  let button = createButton("start", "Next >");
-  button.addEventListener("click", () => toPage2());
-  right.appendChild(button);
-}
+const settingsPage = () => {
+  currentPage = "settings";
+  contentArea.innerHTML = "";
 
-const toPage2 = () => {
-  currentPage = 2;
-  left.innerHTML = "";
-  //left.classList.remove('text-center'); will be useful for other pages but i think i like the center here
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
   heading.innerHTML = "Settings";
-  paragraph.innerHTML = "An explanation of what this page does. Lorem ipsum lorem ipsum lorem ipsum or whatever";
-  left.appendChild(heading);
-  left.appendChild(paragraph);
-  //-----
-  right.innerHTML = "";
-  let settings = [["Cat", "Dog", "Horse"], ["One", "Two"], ["Yes", "No"]];
-  let settingTexts = ["Which animal?", "Which number?", "Yes or no?"];
+  paragraph.innerHTML = "These settings do not save between instances of the program, so be careful! Could I save them? Yeah probably. But you're not supposed to use this every day and there are a whole Three settings. So I'm not going to";
+  contentArea.appendChild(heading);
+  contentArea.appendChild(paragraph);
+  
+  let settings = [["Default", "Indoor", "Outdoor"], ["Conditionally", "Always", "Never"], ["Bio", "Step"]];
+  let settingTexts = ["Den?", "Create?", "Parent?"];
   let numSettings = 0;
   let br = document.createElement('br');
   let input = document.createElement('input');
@@ -49,7 +62,7 @@ const toPage2 = () => {
     numSettings++;
     let settingText = document.createElement('p');
     settingText.innerHTML = settingTexts[numSettings-1]
-    right.appendChild(settingText);
+    contentArea.appendChild(settingText);
     
     input.setAttribute("type", "radio");
     input.setAttribute("name", `setting-${numSettings}`);
@@ -60,10 +73,10 @@ const toPage2 = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase());
       opt.setAttribute("value", option);
-      if (globalSettings.one == null && numOptions == 0) {
+      if (globalSettings.den == null && numOptions == 0) {
         opt.checked = true; //first option should be selected by default
       }
-      else if ((numSettings == 1 && option == globalSettings.one) || (numSettings == 2 && option == globalSettings.two) || (numSettings == 3 && option == globalSettings.three)) {
+      else if ((numSettings == 1 && option == globalSettings.den) || (numSettings == 2 && option == globalSettings.create) || (numSettings == 3 && option == globalSettings.parent)) {
         //if we're looking at setting1 and setting1 = the name of this option, make it checked
         opt.checked = true;
       }
@@ -72,45 +85,125 @@ const toPage2 = () => {
       label.setAttribute("for", option.toLowerCase());
       label.innerHTML = option;
 
-      right.appendChild(opt);
-      right.appendChild(label);
-      right.appendChild(lineBreak);
+      contentArea.appendChild(opt);
+      contentArea.appendChild(label);
+      contentArea.appendChild(lineBreak);
       numOptions++;
     }
   }
-  let backButton = createButton("2to1", "< Back");
-  backButton.addEventListener("click", () => toPage1());
-  right.appendChild(backButton);
-  let nextButton = createButton("2to3", "Next >");
-  nextButton.addEventListener("click", () => toPage3());
-  right.appendChild(nextButton);
+  
+  let back = createButton("back");
+  let next = createButton("next");
+  contentArea.appendChild(back);
+  contentArea.appendChild(next);
 }
 
-const toPage3 = () => {
-  updateData(); //this goes here because the original setting values are null, if we made it so the values update on change, they wouldnt store the value if the user didnt change anything
-  console.log(globalSettings)
-  currentPage = 3;
-  left.innerHTML = "";
-  right.innerHTML = "";
-  let button = createButton("3to2", "< Back");
-  button.addEventListener("click", () => toPage2());
-  right.appendChild(button);
+const instructionsPage = () => {
+  currentPage = "instructions";
+  contentArea.innerHTML = "";
+
+  console.log(currentPage);
+  
+  let back = createButton("back");
+  contentArea.appendChild(back);
 }
 
-const createButton = (id, text) => {
-    let button = document.createElement('button');
-    button.setAttribute("type", "button");;
-    button.classList.add("btn");
-    button.classList.add("btn-primary");
-    //button.classList.add("btn-lg");
-    button.setAttribute("id", id);
-    button.innerHTML = text;
-    return button;
+const uploadPage = () => {
+  currentPage = "upload";
+  contentArea.innerHTML = "";
+
+  console.log(currentPage);
+  
+  let back = createButton("back");
+  let next = createButton("next");
+  contentArea.appendChild(back);
+  contentArea.appendChild(next);
 }
+
+const questionsPage = () => {
+  currentPage = "questions";
+  contentArea.innerHTML = "";
+
+  console.log(currentPage);
+  
+  let back = createButton("back");
+  let next = createButton("next");
+  contentArea.appendChild(back);
+  contentArea.appendChild(next);
+}
+
+const downloadPage = () => {
+  currentPage = "download";
+  contentArea.innerHTML = "";
+
+  console.log(currentPage);
+  
+  let back = createButton("back");
+  let next = createButton("next");
+  contentArea.appendChild(back);
+  contentArea.appendChild(next);
+}
+
+const createButton = (direction) => {
+  let button = document.createElement('button');
+  button.setAttribute("type", "button");
+  button.classList.add("btn");
+  button.classList.add("btn-primary");
+  if (direction == "next") {
+    button.innerHTML = "Next >";
+    button.addEventListener("click", () => pageChange("next"));
+  }
+  else if (direction == "back") {
+    button.innerHTML = "< Back";
+    button.addEventListener("click", () => pageChange("back"));
+  }
+  else {
+    button.innerHTML = direction;
+  }
+  return button;
+}
+
+const pageChange = (direction) => {
+  //home -> upload -> questions -> download; home -> settings; home -> instructions;
+  if (direction == "next") {
+    switch (currentPage) {
+      case "home":
+        uploadPage();
+      case "upload":
+        questionsPage();
+      case "questions":
+        downloadPage();
+      default:
+        homePage();
+    }
+  //questions & dl will probably end up either having restart buttons or no buttons but for now ill keep them like this
+  else if (direction == "back") {
+    switch (currentPage) {
+      case "settings":
+        homePage();
+        updateData();
+        console.log(globalSettings);
+      case "questions":
+        uploadPage();
+      case "download":
+        questionsPage();
+      default:
+        homePage();
+    }
+  }
+}
+
+const updateData = () => {
+  if (currentPage == "settings") {
+    //making this code react to how many settings there are is way too much work for a program that will have maybe four
+    //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
+    globalSettings.den = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
+    globalSettings.create = document.querySelector('[name="setting-2"]:checked').value
+    globalSettings.parent = document.querySelector('[name="setting-3"]:checked').value
+    }
+}
+
 //element.innerHTML = "blah";
 //element.classList.add()
 //element.setAttribute("href", "hi.com")
 //parent = element.parentNode
-
-//thoughts:
-//im going to want more meaningful setting names than one/two/three, but i can just update the settings definition and key-value assignment once i have those names. idc about the html page names
