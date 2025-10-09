@@ -9,8 +9,6 @@
   --accent-color: #c2a591;
   --bs-border-color: rgba(var(--secondary-color-rgb), 0.6);
   --bs-link-color: #f15416;
-  --bs-btn-active-bg: #573428;
-  --bs-btn-active-border-color: #573428;
 }
 
 @media (max-width: 70em) {
@@ -98,6 +96,8 @@ body {
   --bs-btn-hover-border-color: rgb(var(--secondary-color-rgb));
   --bs-btn-hover-color: rgb(var(--secondary-color-rgb));
   --bs-btn-hover-bg: rgba(255, 255, 255, 0);
+  --bs-btn-active-bg: #573428;
+  --bs-btn-active-border-color: #573428;
 }
 .btn-secondary,
 .btn-outline-secondary {
@@ -188,9 +188,10 @@ footer div {
 #secret-container h1 {
   margin-bottom: 0.75em;
 }
-#secret-container .left-section, #secret-container .right-section {
+#secret-container #left-section, #secret-container #right-section {
   min-height: 400px;
 }
+
 
 
 
