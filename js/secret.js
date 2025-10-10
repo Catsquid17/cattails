@@ -146,10 +146,23 @@ const uploadPage = () => {
 
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
+  let uploadFile = document.createElement('input');
+  let uploadColor = document.createElement('input');
   heading.innerHTML = "Upload";
   paragraph.innerHTML = "Please upload something or other";
+  uploadFile.setAttribute("id", "user-file");
+  uploadFile.setAttribute("type", "file");
+  uploadFile.setAttribute("accept", ".sav");
+  uploadColor.setAttribute("id", "user-color");
+  uploadColor.setAttribute("type", "image");
+  uploadColor.setAttribute("accept", "image/png");
   contentArea.appendChild(heading);
   contentArea.appendChild(paragraph);
+  contentArea.appendChild(uploadFile);
+  contentArea.appendChild(uploadColor);
+
+  uploadFile.addEventListener("change", () => parseFile(uploadFile.value));
+  uploadFile.addEventListener("change", () => parseColor(uploadColor.value));
   
   let back = createButton("back");
   let next = createButton("next");
@@ -253,13 +266,33 @@ const pageChange = (direction) => {
 
 const updateData = () => {
   if (currentPage == "settings") {
-    //making this code react to how many settings there are is way too much work for a program that will have maybe four
     //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
-    globalSettings.den = document.querySelector('[name="setting-1"]:checked').value //will select whatever option is selected in the set of options named "setting-1"
-    globalSettings.create = document.querySelector('[name="setting-2"]:checked').value
-    globalSettings.parent = document.querySelector('[name="setting-3"]:checked').value
+    globalSettings.den = document.querySelector('[name="setting-1"]:checked').value; //will select whatever option is selected in the set of options named "setting-1"
+    globalSettings.create = document.querySelector('[name="setting-2"]:checked').value;
+    globalSettings.parent = document.querySelector('[name="setting-3"]:checked').value;
     }
 }
+
+const parseFile = (file) => {
+  console.log("file");
+}
+
+const parseColor = (color) => {
+  console.log("color");
+}
+
+//trying to work on uploading files but idk how this code works yet
+//https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript
+//function fileSelect(event) {
+//  const reader = new FileReader()
+//  reader.onload = handleFileLoad;
+//  reader.readAsText(event.target.files[0])
+//}
+
+//function fileLoad(event) {
+//  console.log(event);
+//  document.getElementById('fileContent').textContent = event.target.result;
+//}
 
 //element.innerHTML = "blah";
 //element.classList.add()
