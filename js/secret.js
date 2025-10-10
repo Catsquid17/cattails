@@ -11,6 +11,7 @@ window.onload = function() {
 const homePage = () => {
   currentPage = "home";
   contentArea.innerHTML = "";
+  contentArea.setAttribute("id", "home");
 
   let image = document.createElement('img');
   let paragraph = document.createElement('p');
@@ -26,6 +27,7 @@ const homePage = () => {
   image.setAttribute("height", "400");
   image.setAttribute("id", "home-img");
   start.innerHTML = "Start";
+  start.classList.remove("next");
   settings.addEventListener("click", () => settingsPage());
   instructions.addEventListener("click", () => instructionsPage());
 
@@ -46,6 +48,7 @@ const homePage = () => {
 const settingsPage = () => {
   currentPage = "settings";
   contentArea.innerHTML = "";
+  contentArea.setAttribute("id", "settings");
 
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
@@ -103,6 +106,7 @@ const settingsPage = () => {
 const instructionsPage = () => {
   currentPage = "instructions";
   contentArea.innerHTML = "";
+  contentArea.setAttribute("id", "instructions");
 
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
@@ -138,6 +142,7 @@ const instructionsPage = () => {
 const uploadPage = () => {
   currentPage = "upload";
   contentArea.innerHTML = "";
+  contentArea.setAttribute("id", "upload");
 
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
@@ -155,6 +160,7 @@ const uploadPage = () => {
 const questionsPage = () => {
   currentPage = "questions";
   contentArea.innerHTML = "";
+  contentArea.setAttribute("id", "questions");
 
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
@@ -172,6 +178,7 @@ const questionsPage = () => {
 const downloadPage = () => {
   currentPage = "download";
   contentArea.innerHTML = "";
+  contentArea.setAttribute("id", "download");
 
   let heading = document.createElement('h2');
   let paragraph = document.createElement('p');
@@ -192,10 +199,12 @@ const createButton = (direction) => {
   button.classList.add("btn");
   button.classList.add("btn-primary");
   if (direction == "next") {
+    button.classList.add("next");
     button.innerHTML = "Next >";
     button.addEventListener("click", () => pageChange("next"));
   }
   else if (direction == "back") {
+    button.classList.add("back");
     button.innerHTML = "< Back";
     button.addEventListener("click", () => pageChange("back"));
   }
