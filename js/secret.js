@@ -63,7 +63,9 @@ const settingsPage = () => {
   for (let setting of settings) {
     numSettings++;
     let settingText = document.createElement('p');
-    settingText.innerHTML = settingTexts[numSettings-1]
+    let strong = document.createElement('strong');
+    strong.innerHTML = settingTexts[numSettings-1]
+    settingText.appendChild(strong);
     contentArea.appendChild(settingText);
     
     input.setAttribute("type", "radio");
@@ -102,7 +104,32 @@ const instructionsPage = () => {
   currentPage = "instructions";
   contentArea.innerHTML = "";
 
-  console.log(currentPage);
+  let heading = document.createElement('h2');
+  let paragraph = document.createElement('p');
+  let video = `<iframe width="1500" height="576" src="https://www.youtube.com/embed/8FQ2eGjcjBo" title="Cattails: Wildwood Story — Launch Trailer (Steam)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  heading.innerHTML = "Instructions";
+  paragraph.innerHTML = `Here's how to use this page! It does something really cool! But you don't get to know yet, so I changed all the text to meows. But there might even be a video! I wonder if I can just paste the embed code here ${video}`;
+  contentArea.appendChild(heading);
+  contentArea.appendChild(paragraph);
+  
+  let list = document.createElement('ol');
+  //i could just define these in the array but that would make editing and reading this excruciating for no reason
+  let steps = [];
+  steps.push("<strong>Weew e mwe Mwe Eeww mwow wm Eeooewoe Ewooeeeo Eoemw.</strong> Wew eem oe oowe oomeweo oow oemoeo em oow owmo ewow em oow Owwoow emew wewm ewoowm mweeowe owmwo 10. Emew wew oemw emweowo oow eemw mwow, eemw wewm eeww emo eoeew Eeooewoe.<ul><li>Mw eemwmwo! Wm wew oemw meo eewoowowo e mwmeo wemmweew, oowwm ewoowme ewoo meo eoowem wm wewm me mwow. Oowmw emw mwmw mwmeo wemmweewe oeoeo.</li><li>Mewwe, eoowememewe, emo eeeweeemwwe em oow ooewwm emo oowwm ewoowme ewoo eoo mw eemmwwo emwm oe oow weo. Ooweew weew ewmw wmwmwoowme we woeeoow oee wew eemo wo mwmemw eemowmwwme.</li></ul>");
+  steps.push("<strong>Oeeeow wewm eemw mwowe.</strong> Wew ewoo mwwo oe wooeeo oow OEMWMO'e mwow, MEO oow me mwow wew mweo emweowo. Oow mwowe emw wm <code>E:\\Wewme\\MEWW\\EooOeoe\\Oeeeo\\Eeooewoe_Ewooeeeo_Eoemw\\eemwe</code>, eowmw MEWW we oow meww em wewm OE.<mm>Oow EooOeoe meoowm we owoowm mw owmewoo. Meooee oowew wmeomweoweme wm wew emw oemwme omewmow:<ol><li>Omwee Ewm+M. Ewm we eoemo mem oow Ewmoeee eww.</li><li>Owow wm %EOOOEOE% emo omwee EE. E meoowm ewoo oeo wo.</li><li>Oeee eo oow oeo em wewm mwow woooemwm emo weew ewmw wew emw wm EooOeoe, meo Meewwme.</li><li>Eowee oomeweo oow meoowme Oeeeo, Eeooewoe_Ewooeeeo_Eoemw, emo eemwe.</li><li>Eowee em oow mem eo oow oeo em wewm mwow woooemwm emo eeow oow meoowm oeoo.</li><li>Eoemw oow oeoo wm Meowoeo em eowmwmwm wew eem ewwo omeee em wo.</li><li>Eoo oow mwow meww em wewm eemw mwow oe oow wmo em wewm oeoo. Oow mwwmwme wm oow mwow mewwe eemmweoemo ewoo oow ewmmwmo eemw eoeo. Ee, wm oow oemwmo'e mwow we wm eemw eoeo 10, eoo \"\\eoeo10.eem\" oe oow wmo.</li><li>Oow mwmeo oeoo eoewoo oeee owew <code>E:\\Wewme\\MEWW\\EooOeoe\\Oeeeo\\Eeooewoe_Ewooeeeo_Eoemw\\eemwe\\eoeo10.eem</code></li></ol>");
+  steps.push("Mwowmm oe oow ewoeeww oeew emo <strong>ewoweo \"Ewoowmee\" oe mwmwwe oow weo weewm'e eooweme.</strong> Oow mmeeewm ewoo meo mwwwwmwm wewm eoewewe wm wew mwoeeo, ee mw eemwmwo!");
+  steps.push("Mmew oow ewoeeww oeew, <strong>ewoweo \"Eoemo\".</strong>");
+  steps.push("<strong>Wooeeo oow oemwmo'e eemw mwow.</strong> Mwmeo, eowee oow wooeeo mwooem. Wm wew oemw oow mwow oeoo emwoowm oeem mmew eowo 2, wew eem eeow wo emo oeeow wo wmoe oow mem eo oow oeo em oow \"Ewoweo e mwow\" ewmoee. Eoowmewew, wew eem wemweoow mmeeew wewm eewowowm emo oeeeow wewm mwow");
+  steps.push("<strong>Wooeeo oow oemwmo'e eeeo eeoem.</strong> Eeeo eeoeme emw eoemwo mwmw eoeewow oe eemw mwowe, ee eoo wew oemw oe oe we meee ewo em oow \"eemwe\" meoowm, wmowm oow \"eeoeme\" meoowm, emo ewoweo oow mweoo eeeo. Oowe eowo wew mw eoowemeo owowmowme em wewm ewoowmee.");
+  steps.push("Omemwow eeww wmmemweowem emewo wewm mwow em oow mwoo oeew. Wew'oo mwwo oe wowmowmw eoweo ewoowm wew weow wewm me mwow ewoo. Wew eem eoee eowewmw emw eeoe ooeo wew mw mwoeowo oe wewm me eoemeeowm. Weeo mwoeowmwe ewoo mw mwoowo ewo ewoeweoweeoow, mwo oowe we wewmwo wm wew oemw oweoeememe em wwoowoow ewmwmeoweme.");
+  steps.push("Omeewwo oe oow mwoo oeew emo wewm weo ewoo mwmweo omeeweewme. Oeemoeeo oow mwow emo wmeoeoo wo ee wew eewoo emw eoowm weo.");
+  steps.push("Oewmeo oow eeww. Wm me wmmem wweeeew oeoe wo, oow weo oee mwwm wmeoeoowo eweeweemwoow! Mwo mwwwwmwm: oowe weo ewoo emow mw eewoeowmow ewoo oow mwow wew ewmwmeowo wo mem. Wm wew eewoo owew oe ooew ewoo EMW eoowm mwow, me em eoowmewew, ooweew oeew oowe weo ewo em wewm weoe meoowm mwmeo.");
+  for (let step of steps) {
+    let item = document.createElement('li');
+    item.innerHTML = step;
+    list.appendChild(item);
+  }
+  contentArea.appendChild(list);
   
   let back = createButton("back");
   contentArea.appendChild(back);
@@ -112,7 +139,12 @@ const uploadPage = () => {
   currentPage = "upload";
   contentArea.innerHTML = "";
 
-  console.log(currentPage);
+  let heading = document.createElement('h2');
+  let paragraph = document.createElement('p');
+  heading.innerHTML = "Upload";
+  paragraph.innerHTML = "Please upload something or other";
+  contentArea.appendChild(heading);
+  contentArea.appendChild(paragraph);
   
   let back = createButton("back");
   let next = createButton("next");
@@ -124,7 +156,12 @@ const questionsPage = () => {
   currentPage = "questions";
   contentArea.innerHTML = "";
 
-  console.log(currentPage);
+  let heading = document.createElement('h2');
+  let paragraph = document.createElement('p');
+  heading.innerHTML = "Questions";
+  paragraph.innerHTML = "I have questions for you";
+  contentArea.appendChild(heading);
+  contentArea.appendChild(paragraph);
   
   let back = createButton("back");
   let next = createButton("next");
@@ -136,7 +173,12 @@ const downloadPage = () => {
   currentPage = "download";
   contentArea.innerHTML = "";
 
-  console.log(currentPage);
+  let heading = document.createElement('h2');
+  let paragraph = document.createElement('p');
+  heading.innerHTML = "Download";
+  paragraph.innerHTML = "You can download this if you want";
+  contentArea.appendChild(heading);
+  contentArea.appendChild(paragraph);
   
   let back = createButton("back");
   let next = createButton("next");
