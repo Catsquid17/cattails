@@ -7,7 +7,7 @@ let contentArea = document.querySelector("#content");
 window.onload = function() {
   homePage();
 };
-
+//================================================================================================================================================================================================
 const homePage = () => {
   currentPage = "home";
   contentArea.innerHTML = "";
@@ -44,7 +44,7 @@ const homePage = () => {
   contentArea.appendChild(paragraph);
   contentArea.appendChild(menu);
 }
-
+//================================================================================================================================================================================================
 const settingsPage = () => {
   currentPage = "settings";
   contentArea.innerHTML = "";
@@ -102,7 +102,7 @@ const settingsPage = () => {
   let back = createButton("back");
   contentArea.appendChild(back);
 }
-
+//================================================================================================================================================================================================
 const instructionsPage = () => {
   currentPage = "instructions";
   contentArea.innerHTML = "";
@@ -138,7 +138,7 @@ const instructionsPage = () => {
   let back = createButton("back");
   contentArea.appendChild(back);
 }
-
+//================================================================================================================================================================================================
 const uploadPage = () => {
   currentPage = "upload";
   contentArea.innerHTML = "";
@@ -154,22 +154,45 @@ const uploadPage = () => {
   uploadFile.setAttribute("type", "file");
   uploadFile.setAttribute("accept", ".sav");
   uploadColor.setAttribute("id", "user-color");
-  uploadColor.setAttribute("type", "image");
+  uploadColor.setAttribute("type", "file");
   uploadColor.setAttribute("accept", "image/png");
   contentArea.appendChild(heading);
   contentArea.appendChild(paragraph);
   contentArea.appendChild(uploadFile);
   contentArea.appendChild(uploadColor);
 
-  uploadFile.addEventListener("change", () => parseFile(uploadFile.value));
-  uploadFile.addEventListener("change", () => parseColor(uploadColor.value));
+  //i dont actually need to store these files on a server so i can skip a lot of what they do here
+  //https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript
+  //https://stackoverflow.com/questions/750032/reading-file-contents-on-the-client-side-in-javascript-in-various-browsers 
+  uploadFile.addEventListener("change", () => {
+    console.log("file");
+    var file = uploadFile.files[0];
+    var reader = new FileReader();
+    reader.readAsText(file, "UTF-8");
+    reader.onload = function (event) {
+      const contents = event.target.result;
+      console.log(contents.slice(0, 1000));
+      const saveObj = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
+      console.log(saveObj);
+      console.log(`The player is named ${saveObj.player_name}`);
+    }
+    reader.onerror = function (event) {
+      console.log("Error");
+    }
+  });
+  uploadColor.addEventListener("change", () => {
+    console.log("color");
+    //not going to bother with this just yet, but this may be useful later:
+    //https://stackoverflow.com/questions/61514128/javascript-get-pixel-data-of-image
+  });
   
   let back = createButton("back");
   let next = createButton("next");
+  next.disabled = true; //disable button until files provided
   contentArea.appendChild(back);
   contentArea.appendChild(next);
 }
-
+//================================================================================================================================================================================================
 const questionsPage = () => {
   currentPage = "questions";
   contentArea.innerHTML = "";
@@ -187,7 +210,7 @@ const questionsPage = () => {
   contentArea.appendChild(back);
   contentArea.appendChild(next);
 }
-
+//================================================================================================================================================================================================
 const downloadPage = () => {
   currentPage = "download";
   contentArea.innerHTML = "";
@@ -205,7 +228,7 @@ const downloadPage = () => {
   contentArea.appendChild(back);
   contentArea.appendChild(next);
 }
-
+//================================================================================================================================================================================================
 const createButton = (direction) => {
   let button = document.createElement('button');
   button.setAttribute("type", "button");
@@ -226,7 +249,7 @@ const createButton = (direction) => {
   }
   return button;
 }
-
+//================================================================================================================================================================================================
 const pageChange = (direction) => {
   //home -> upload -> questions -> download; home -> settings; home -> instructions;
   if (direction == "next") {
@@ -263,7 +286,7 @@ const pageChange = (direction) => {
     }
   }
 }
-
+//================================================================================================================================================================================================
 const updateData = () => {
   if (currentPage == "settings") {
     //https://stackoverflow.com/questions/44961780/store-data-from-html-radio-buttons-into-javascript-array
@@ -272,27 +295,6 @@ const updateData = () => {
     globalSettings.parent = document.querySelector('[name="setting-3"]:checked').value;
     }
 }
-
-const parseFile = (file) => {
-  console.log("file");
-}
-
-const parseColor = (color) => {
-  console.log("color");
-}
-
-//trying to work on uploading files but idk how this code works yet
-//https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript
-//function fileSelect(event) {
-//  const reader = new FileReader()
-//  reader.onload = handleFileLoad;
-//  reader.readAsText(event.target.files[0])
-//}
-
-//function fileLoad(event) {
-//  console.log(event);
-//  document.getElementById('fileContent').textContent = event.target.result;
-//}
 
 //element.innerHTML = "blah";
 //element.classList.add()
