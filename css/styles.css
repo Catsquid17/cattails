@@ -98,6 +98,8 @@ body {
   --bs-btn-hover-bg: rgba(255, 255, 255, 0);
   --bs-btn-active-bg: #573428;
   --bs-btn-active-border-color: #573428;
+  --bs-btn-disabled-bg: rgba(var(--secondary-color-rgb), .75);
+  --bs-btn-disabled-border-color: rgba(255, 255, 255, 0);
 }
 .btn-secondary,
 .btn-outline-secondary {
@@ -106,6 +108,8 @@ body {
   --bs-btn-border-color: rgb(var(--secondary-color-rgb));
   --bs-btn-hover-border-color: rgb(var(--secondary-color-rgb));
   --bs-btn-hover-bg: rgb(var(--secondary-color-rgb));
+  --bs-btn-disabled-bg: rgba(var(--secondary-color-rgb), .75);
+  --bs-btn-disabled-border-color: rgba(255, 255, 255, 0);
 }
 
 /* Footer */
@@ -179,6 +183,7 @@ footer div {
 #bug-button {
   margin: 1em;
 }
+
 
 
 
