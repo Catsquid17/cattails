@@ -241,11 +241,42 @@ const downloadPage = () => {
   paragraph.innerHTML = "You can download this if you want";
   contentArea.appendChild(heading);
   contentArea.appendChild(paragraph);
+
+  let dlBtn = createButton("Download");
+  dlBtn.addEventListener("click", () => zipEverything());
+  contentArea.appendChild(dlBtn);
   
   let back = createButton("back");
   let next = createButton("next");
   contentArea.appendChild(back);
   contentArea.appendChild(next);
+}
+//================================================================================================================================================================================================
+const zipEverything = () => {
+  //https://github.com/101arrowz/fflate
+  //define each file's name and contents - placeholders for now
+  const files = {
+    "1/1.txt": save.player_name,
+    "2/2.txt": `${save.kitten_one_name}, ${save.kitten_two_name}, ${save.kitten_three_name}, ${save.kitten_four_name}`
+  };
+  
+  const filesToZip = {}; //holds result of below
+  //turns the pair of name/content strings into a data type the zipper can work with
+  for (const [fileName, fileContents] of Object.entries(files)) {
+    filesToZip[fileName] = fflate.strToU8(fileContents);
+  }
+  
+  const zippedFiles = fflate.zipSync(filesToZip); //zips files
+  
+  //https://flexiple.com/javascript/download-flle-using-javascript
+  const dlURL = new Blob([zippedFiles], { type: "application/zip" }); //i dont really get what a blob is but everyone uses it all the time
+  const dl = document.createElement("a"); //create a download button (it has to be an <a>)
+  dl.href = URL.createObjectURL(dlURL); //put the blob in as the URL
+  dl.download = "test-download.zip"; //name of file to be downloaded
+  dl.classList.add("download"); //style button
+  contentArea.appendChild(dl);
+  dl.click();
+  URL.revokeObjectURL(dl.href); //clear memory URL was stored in
 }
 //================================================================================================================================================================================================
 const createButton = (direction) => {
