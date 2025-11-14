@@ -149,6 +149,8 @@ const uploadPage = () => {
   let paragraph = document.createElement('p');
   let uploadFile = document.createElement('input');
   let uploadColor = document.createElement('input');
+  let fileMsg = document.createElement('span');
+  let colorMsg = document.createElement('span');
   heading.innerHTML = "Upload";
   paragraph.innerHTML = "Please upload something or other";
   uploadFile.setAttribute("id", "user-file");
@@ -160,7 +162,9 @@ const uploadPage = () => {
   contentArea.appendChild(heading);
   contentArea.appendChild(paragraph);
   contentArea.appendChild(uploadFile);
+  contentArea.appendChild(fileMsg);
   contentArea.appendChild(uploadColor);
+  contentArea.appendChild(colorMsg);
   let validFile = false;
   let validColor = false;
 
@@ -176,17 +180,17 @@ const uploadPage = () => {
       save = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
       console.log(`The player is named ${save.player_name}`);
       if (save.has_kittens == "1.0" || save.has_kittens == "1" || save.has_kittens == "true") {
-        console.log("valid file!")
+        fileMsg.innerHTML = ""
         validFile = true;
       }
       else {
-        console.log("the file was successfully read but is not valid.")
         validFile = false;
+        fileMsg.innerHTML = "The file was successfully read but is not valid."
       }
     }
     reader.onerror = function (event) {
-      console.log("Error");
       validFile = false;
+      fileMsg.innerHTML = "Error reading file!"
     }
 
     if (validFile == true && validColor == true) {
