@@ -149,8 +149,8 @@ const uploadPage = () => {
   let paragraph = document.createElement('p');
   let uploadFile = document.createElement('input');
   let uploadColor = document.createElement('input');
-  let fileMsg = document.createElement('span');
-  let colorMsg = document.createElement('span');
+  let fileMsg = document.createElement('strong');
+  let colorMsg = document.createElement('strong');
   heading.innerHTML = "Upload";
   paragraph.innerHTML = "Please upload something or other";
   uploadFile.setAttribute("id", "user-file");
@@ -177,15 +177,21 @@ const uploadPage = () => {
     reader.readAsText(file, "UTF-8");
     reader.onload = function (event) {
       const contents = event.target.result;
-      save = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
-      console.log(`The player is named ${save.player_name}`);
-      if (save.has_kittens == "1.0" || save.has_kittens == "1" || save.has_kittens == "true") {
-        fileMsg.innerHTML = ""
-        validFile = true;
-      }
-      else {
+      try {
+        save = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
+        console.log(`The player is named ${save.player_name}`);
+        if (save.has_kittens == "1.0" || save.has_kittens == "1" || save.has_kittens == "true") {
+          fileMsg.innerHTML = ""
+          validFile = true;
+        }
+        else {
+          validFile = false;
+          fileMsg.innerHTML = "The file was successfully read but is not valid."
+        }
+      } catch (error) {
+        //if file cannot be parsed, it is likely the wrong kind of file, be sure to reject it
         validFile = false;
-        fileMsg.innerHTML = "The file was successfully read but is not valid."
+        fileMsg.innerHTML = "Error reading file!"
       }
     }
     reader.onerror = function (event) {
