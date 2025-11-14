@@ -3,6 +3,7 @@
 let globalSettings = {"den": "Default", "create": "Conditionally", "parent": "Bio"};
 let currentPage = "home"; //home -> upload -> questions -> download; home -> settings; home -> instructions;
 let contentArea = document.querySelector("#content");
+let save = '{"key": "value"}';
 
 window.onload = function() {
   homePage();
@@ -160,30 +161,48 @@ const uploadPage = () => {
   contentArea.appendChild(paragraph);
   contentArea.appendChild(uploadFile);
   contentArea.appendChild(uploadColor);
+  let validFile = false;
+  let validColor = false;
 
   //i dont actually need to store these files on a server so i can skip a lot of what they do here
   //https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript
   //https://stackoverflow.com/questions/750032/reading-file-contents-on-the-client-side-in-javascript-in-various-browsers 
   uploadFile.addEventListener("change", () => {
-    console.log("file");
     var file = uploadFile.files[0];
     var reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = function (event) {
       const contents = event.target.result;
-      console.log(contents.slice(0, 1000));
-      const saveObj = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
-      console.log(saveObj);
-      console.log(`The player is named ${saveObj.player_name}`);
+      save = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
+      console.log(`The player is named ${save.player_name}`);
+      console.log(save.has_kittens);
+      if (save.has_kittens == "1.0" || save.has_kittens == "1" || save.has_kittens == "true") {
+        console.log("valid file!")
+        validFile = true;
+      }
+      else {
+        console.log("the file was successfully read but is not valid.")
+        validFile = false;
+      }
     }
     reader.onerror = function (event) {
       console.log("Error");
+      validFile = false;
+    }
+
+    if (validFile == true && validColor == true) {
+      next.disabled = false; //enable button when files are valid
     }
   });
   uploadColor.addEventListener("change", () => {
     console.log("color");
+
     //not going to bother with this just yet, but this may be useful later:
     //https://stackoverflow.com/questions/61514128/javascript-get-pixel-data-of-image
+    validColor = true;
+    if (validFile == true && validColor == true) {
+      next.disabled = false; //enable button when files are valid
+    }
   });
   
   let back = createButton("back");
