@@ -175,7 +175,6 @@ const uploadPage = () => {
       const contents = event.target.result;
       save = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
       console.log(`The player is named ${save.player_name}`);
-      console.log(save.has_kittens);
       if (save.has_kittens == "1.0" || save.has_kittens == "1" || save.has_kittens == "true") {
         console.log("valid file!")
         validFile = true;
@@ -256,8 +255,8 @@ const zipEverything = () => {
   //https://github.com/101arrowz/fflate
   //define each file's name and contents - placeholders for now
   const files = {
-    "1/1.txt": save.player_name,
-    "2/2.txt": `${save.kitten_one_name}, ${save.kitten_two_name}, ${save.kitten_three_name}, ${save.kitten_four_name}`
+    "Test/1/1.txt": save.player_name,
+    "Test/2/2.txt": `${save.kitten_one_name}, ${save.kitten_two_name}, ${save.kitten_three_name}, ${save.kitten_four_name}`
   };
   
   const filesToZip = {}; //holds result of below
@@ -321,9 +320,8 @@ const pageChange = (direction) => {
   else if (direction == "back") {
     switch (currentPage) {
       case "settings":
-        homePage();
         updateData();
-        console.log(globalSettings);
+        homePage();
         break;
       case "questions":
         uploadPage();
