@@ -1,9 +1,10 @@
 "use strict";
 
-let globalSettings = {"den": "Default", "create": "Conditionally", "parent": "Bio"};
+let globalSettings = {"den": "Default", "create": "Yes", "parent": "Bio"};
 let currentPage = "home"; //home -> upload -> questions -> download; home -> settings; home -> instructions;
 let contentArea = document.querySelector("#content");
 let save = '{"key": "value"}';
+let color = [];
 
 window.onload = function() {
   homePage();
@@ -58,7 +59,7 @@ const settingsPage = () => {
   contentArea.appendChild(heading);
   contentArea.appendChild(paragraph);
   
-  let settings = [["Default", "Indoor", "Outdoor"], ["Conditionally", "Always", "Never"], ["Bio", "Step"]];
+  let settings = [["Default", "Indoor", "Outdoor"], ["Yes", "No"], ["Bio", "Step"]];
   let settingTexts = ["Den?", "Create?", "Parent?"];
   let numSettings = 0;
   let br = document.createElement('br');
@@ -159,14 +160,13 @@ const uploadPage = () => {
   uploadColor.setAttribute("id", "user-color");
   uploadColor.setAttribute("type", "file");
   uploadColor.setAttribute("accept", "image/png");
+  uploadColor.classList.add("visually-hidden");
   contentArea.appendChild(heading);
   contentArea.appendChild(paragraph);
   contentArea.appendChild(uploadFile);
   contentArea.appendChild(fileMsg);
   contentArea.appendChild(uploadColor);
   contentArea.appendChild(colorMsg);
-  let validFile = false;
-  let validColor = false;
 
   //i dont actually need to store these files on a server so i can skip a lot of what they do here
   //https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript
@@ -182,36 +182,48 @@ const uploadPage = () => {
         console.log(`The player is named ${save.player_name}`);
         if (save.has_kittens == "1.0" || save.has_kittens == "1" || save.has_kittens == "true") {
           fileMsg.innerHTML = ""
-          validFile = true;
+
+          //determine whether showing color upload is needed
+          if (globalSettings.create = "Yes") {
+            let defaultColors = [];
+            fetch("../secret/default_colors.json")
+              .then(response => response.json())
+              .then(json => defaultColors = json.default_colors;
+        
+            //if player is using a default color, they will not have a color file to upload
+            if (defaultColors.includes(save.player_color_guid)) {
+              //later: will need to store the actual values for each default coat and load them here, not particuarly important for now
+              //consider adding message "Color detected automatically"
+            } else {
+              uploadColor.classList.remove("visually-hidden");
+            }
+          }
+          else {
+            //uploading color is not needed if setting is disabled
+            next.disabled = false; //enable button
+          }
         }
         else {
-          validFile = false;
           fileMsg.innerHTML = "The file was successfully read but is not valid."
         }
       } catch (error) {
         //if file cannot be parsed, it is likely the wrong kind of file, be sure to reject it
-        validFile = false;
         fileMsg.innerHTML = "Error reading file!"
       }
     }
     reader.onerror = function (event) {
-      validFile = false;
       fileMsg.innerHTML = "Error reading file!"
     }
-
-    if (validFile == true && validColor == true) {
-      next.disabled = false; //enable button when files are valid
-    }
   });
-  uploadColor.addEventListener("change", () => {
-    console.log("color");
-
-    //not going to bother with this just yet, but this may be useful later:
-    //https://stackoverflow.com/questions/61514128/javascript-get-pixel-data-of-image
-    validColor = true;
-    if (validFile == true && validColor == true) {
-      next.disabled = false; //enable button when files are valid
+  uploadColor.addEventListener("change", async () => {
+    console.log(colors);
+    const colorURL = URL.createObjectURL(uploadColor.files[0]);
+    //after parsing save, determining color file is needed, and that it is not default:
+    for (let i = 0; i < 23; i++) {
+      colors.push(await getPixel(colorURL, i, 0).slice(0,3))
     }
+    console.log(colors);
+    next.disabled = false; //enable button - should only happen if input was valid but thats for later
   });
   
   let back = createButton("back");
@@ -353,7 +365,24 @@ const updateData = () => {
     globalSettings.parent = document.querySelector('[name="setting-3"]:checked').value;
     }
 }
-
+//=================================================================================================================================================================================================
+//https://www.reddit.com/r/learnjavascript/comments/1eudk3l/how_to_get_rgb_data_of_a_image/
+const getPixel = async (url, x, y) => {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  
+  const image = new Image();
+  image.src = url;
+  await image.decode();
+  
+  canvas.width = image.width;
+  canvas.height = image.height;
+  
+  context.drawImage(image, 0, 0);
+  const imageBuffer = context.getImageData(x, y, 1, 1);
+  
+  return imageBuffer.data;
+}
 //element.innerHTML = "blah";
 //element.classList.add()
 //element.setAttribute("href", "hi.com")
