@@ -4,7 +4,7 @@ let globalSettings = {"den": "Default", "create": "Yes", "parent": "Bio"};
 let currentPage = "home"; //home -> upload -> questions -> download; home -> settings; home -> instructions;
 let contentArea = document.querySelector("#content");
 let save = '{"key": "value"}';
-let color = [];
+let colors = [];
 
 window.onload = function() {
   homePage();
@@ -188,15 +188,18 @@ const uploadPage = () => {
             let defaultColors = [];
             fetch("../secret/default_colors.json")
               .then(response => response.json())
-              .then(json => defaultColors = json.default_colors;
-        
-            //if player is using a default color, they will not have a color file to upload
-            if (defaultColors.includes(save.player_color_guid)) {
-              //later: will need to store the actual values for each default coat and load them here, not particuarly important for now
-              //consider adding message "Color detected automatically"
-            } else {
-              uploadColor.classList.remove("visually-hidden");
-            }
+              .then(json => {
+                defaultColors = json.default_colors
+                //if player is using a default color, they will not have a color file to upload
+                if (defaultColors.includes(save.player_color_guid)) {
+                  //later: will need to store the actual values for each default coat and load them here, not particuarly important for now
+                  //consider adding message "Color detected automatically"
+                  console.log("default used");
+                  next.disabled = false; //enable button, no color file needed
+                } else {
+                  uploadColor.classList.remove("visually-hidden");
+                }
+            });
           }
           else {
             //uploading color is not needed if setting is disabled
@@ -216,11 +219,11 @@ const uploadPage = () => {
     }
   });
   uploadColor.addEventListener("change", async () => {
-    console.log(colors);
     const colorURL = URL.createObjectURL(uploadColor.files[0]);
     //after parsing save, determining color file is needed, and that it is not default:
     for (let i = 0; i < 23; i++) {
-      colors.push(await getPixel(colorURL, i, 0).slice(0,3))
+      let thisColor = await getPixel(colorURL, i, 0);
+      colors.push(thisColor.slice(0,3)); //remove A channel, dont need it
     }
     console.log(colors);
     next.disabled = false; //enable button - should only happen if input was valid but thats for later
