@@ -5,6 +5,8 @@ let currentPage = "home"; //home -> upload -> questions -> download; home -> set
 let contentArea = document.querySelector("#content");
 let save = '{"key": "value"}';
 let colors = [];
+let heir = 0;
+let relatives = [];
 
 window.onload = function() {
   homePage();
@@ -172,6 +174,7 @@ const uploadPage = () => {
   //https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript
   //https://stackoverflow.com/questions/750032/reading-file-contents-on-the-client-side-in-javascript-in-various-browsers 
   uploadFile.addEventListener("change", () => {
+    next.disabled = true; //disable button. if file using default is uploaded, then a normal one, next will stil be enabled even though color is needed. dont love having this long-term but this encourages user to check if color is right so maybe its better
     var file = uploadFile.files[0];
     var reader = new FileReader();
     reader.readAsText(file, "UTF-8");
@@ -179,12 +182,11 @@ const uploadPage = () => {
       const contents = event.target.result;
       try {
         save = JSON.parse(`${contents.slice(0, contents.lastIndexOf("}")).trim()}}`); //parse to JSON. make sure it stops sending chars after last } because there may be an invisible char at the end of these files
-        console.log(`The player is named ${save.player_name}`);
         if (save.has_kittens == "1.0" || save.has_kittens == "1" || save.has_kittens == "true") {
-          fileMsg.innerHTML = ""
+          fileMsg.innerHTML = `File read successfully. This is ${save.player_name}'s file.`
 
           //determine whether showing color upload is needed
-          if (globalSettings.create = "Yes") {
+          if (globalSettings.create == "Yes") {
             let defaultColors = [];
             fetch("../secret/default_colors.json")
               .then(response => response.json())
@@ -247,6 +249,54 @@ const questionsPage = () => {
   paragraph.innerHTML = "I have questions for you";
   contentArea.appendChild(heading);
   contentArea.appendChild(paragraph);
+
+  let npcs = ["Krampy", "Coco", "Jag", "Champ", "Alabaster", "Bob", "Talon", "Phantom", "Falcon", "Garlic", "Ember", "Elli", "Buttercup", "Spark", "Lainey", "Fliss", "Glimmer", "Charlotte", "Rosemary", "Zephyr", "Umbra", "The Forest Guardian", "The Wildwood Champion"]
+  let settings = [[1, 2, 3, 4], npcs];
+  let settingLabels = [[save.kitten_one_name, save.kitten_two_name, save.kitten_three_name, save.kitten_four_name], npcs];
+  let settingTexts = ["Who?", "Who?"];
+  let numSettings = 0;
+  let br = document.createElement('br');
+  let input = document.createElement('input');
+
+  for (let setting of settings) {
+    numSettings++;
+    let settingText = document.createElement('p');
+    let strong = document.createElement('strong');
+    strong.innerHTML = settingTexts[numSettings-1]
+    settingText.appendChild(strong);
+    contentArea.appendChild(settingText);
+
+    if (numSettings == 1) {
+      input.setAttribute("type", "checkbox");
+      input.setAttribute("name", "relatives");
+    } else {
+      input.setAttribute("type", "radio");
+      input.setAttribute("name", "heir");
+    }
+
+    let numOptions = 0;
+    for (let option of setting) {
+      let opt = input.cloneNode(true);
+      let lineBreak = br.cloneNode()
+      opt.setAttribute("id", option.toLowerCase().replace(" ", "_"));
+      opt.setAttribute("value", option);
+      if (globalSettings.den == null && numOptions == 0) {
+        opt.checked = true; //first option should be selected by default
+      }
+      else if ((numSettings == 1 && option == globalSettings.den) || (numSettings == 2 && option == globalSettings.create) || (numSettings == 3 && option == globalSettings.parent)) {
+        //if we're looking at setting1 and setting1 = the name of this option, make it checked
+        opt.checked = true;
+      }
+      
+      let label = document.createElement('label');
+      label.setAttribute("for", option.toLowerCase().replace(" ", "_"));
+      label.innerHTML = settingLabels[numOptions];
+
+      contentArea.appendChild(opt);
+      contentArea.appendChild(label);
+      contentArea.appendChild(lineBreak);
+      numOptions++;
+    }
   
   let back = createButton("back");
   let next = createButton("next");
@@ -335,6 +385,7 @@ const pageChange = (direction) => {
         questionsPage();
         break;
       case "questions":
+        updateData();
         downloadPage();
         break;
       default:
@@ -349,6 +400,7 @@ const pageChange = (direction) => {
         homePage();
         break;
       case "questions":
+        updateData();
         uploadPage();
         break;
       case "download":
@@ -367,6 +419,12 @@ const updateData = () => {
     globalSettings.create = document.querySelector('[name="setting-2"]:checked').value;
     globalSettings.parent = document.querySelector('[name="setting-3"]:checked').value;
     }
+  else if (currentPage == "questions") {
+    heir = document.querySelector('[name="heir"]:checked').value;
+    relatives = document.querySelectorAll('[name="relatives"]:checked').value;
+    console.log(heir);
+    console.log(relatives);
+  }
 }
 //=================================================================================================================================================================================================
 //https://www.reddit.com/r/learnjavascript/comments/1eudk3l/how_to_get_rgb_data_of_a_image/
