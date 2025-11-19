@@ -251,7 +251,7 @@ const questionsPage = () => {
   contentArea.appendChild(paragraph);
 
   let npcs = ["Krampy", "Coco", "Jag", "Champ", "Alabaster", "Bob", "Talon", "Phantom", "Falcon", "Garlic", "Ember", "Elli", "Buttercup", "Spark", "Lainey", "Fliss", "Glimmer", "Charlotte", "Rosemary", "Zephyr", "Umbra", "The Forest Guardian", "The Wildwood Champion"]
-  let settings = [[1, 2, 3, 4], npcs];
+  let settings = [["One", "Two", "Three", "Four"], npcs];
   let settingLabels = [[save.kitten_one_name, save.kitten_two_name, save.kitten_three_name, save.kitten_four_name], npcs];
   let settingTexts = ["Who?", "Who?"];
   let numSettings = 0;
@@ -266,7 +266,7 @@ const questionsPage = () => {
     settingText.appendChild(strong);
     contentArea.appendChild(settingText);
 
-    if (numSettings == 1) {
+    if (numSettings == 2) {
       input.setAttribute("type", "checkbox");
       input.setAttribute("name", "relatives");
     } else {
@@ -280,23 +280,21 @@ const questionsPage = () => {
       let lineBreak = br.cloneNode()
       opt.setAttribute("id", option.toLowerCase().replace(" ", "_"));
       opt.setAttribute("value", option);
-      if (globalSettings.den == null && numOptions == 0) {
-        opt.checked = true; //first option should be selected by default
-      }
-      else if ((numSettings == 1 && option == globalSettings.den) || (numSettings == 2 && option == globalSettings.create) || (numSettings == 3 && option == globalSettings.parent)) {
+      if ((numSettings == 1 && option == heir) || (numSettings == 2 && relatives.includes(option))) {
         //if we're looking at setting1 and setting1 = the name of this option, make it checked
         opt.checked = true;
       }
       
       let label = document.createElement('label');
       label.setAttribute("for", option.toLowerCase().replace(" ", "_"));
-      label.innerHTML = settingLabels[numOptions];
+      label.innerHTML = settingLabels[numSettings-1][numOptions];
 
       contentArea.appendChild(opt);
       contentArea.appendChild(label);
       contentArea.appendChild(lineBreak);
       numOptions++;
     }
+  }
   
   let back = createButton("back");
   let next = createButton("next");
