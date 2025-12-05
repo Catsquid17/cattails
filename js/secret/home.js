@@ -10,6 +10,7 @@ PageBuilder.prototype.homePage = function () {
   let start = this.createButton("next");
   let settings = this.createButton("Settings");
   let instructions = document.createElement("a");
+  let changelog = document.createElement("a");
 
   paragraph.innerHTML = "This is a blurb explaining all about my super cool super awesome super secret project! Oh boy I sure do hope I finish it someday. Maybe late 2026 if I'm lucky";
   image.setAttribute("src", "https://placehold.co/400");
@@ -25,10 +26,14 @@ PageBuilder.prototype.homePage = function () {
   instructions.setAttribute("href", "https://catsquid17.github.io/cattails/secret/instructions.html");
   instructions.classList.add("btn");
   instructions.classList.add("btn-primary");
+  changelog.innerHTML = "Changelog"
+  changelog.setAttribute("href", "https://catsquid17.github.io/cattails/secret/changelog.html");
+  changelog.classList.add("btn");
+  changelog.classList.add("btn-primary");
 
   let menu = document.createElement("ul");
   menu.setAttribute("id", "button-list");
-  let buttons = [start, settings, instructions];
+  let buttons = [start, settings, instructions, changelog];
   for (let button of buttons) {
     let item = document.createElement("li");
     item.appendChild(button);
