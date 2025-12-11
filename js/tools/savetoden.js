@@ -199,7 +199,7 @@ convertButton.addEventListener("click", () => {
   converter.convert();
 });
 
-copyButton.addEventListener("click", (event) => {
+copyButton.addEventListener("click", () => {
   //https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
   let copyText = document.getElementById("result");
   navigator.clipboard.writeText(copyText.textContent);
