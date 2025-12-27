@@ -11,6 +11,8 @@ const lightMode = () => {
   document.documentElement.style.setProperty("--accent-color", "#442827");
   document.documentElement.style.setProperty("--accent-text-color", "#f3e8df");
   document.documentElement.style.setProperty("--button-hover-text-color", "#f3e8df");
+  document.documentElement.style.setProperty("--disabled-bg", "color-mix(in srgb, var(--accent-color) 70%, var(--bg-color) 30%)");
+  document.documentElement.style.setProperty("--disabled-text", "color-mix(in srgb, var(--text-color) 20%, var(--accent-text-color) 80%)");
   darkModeBtn.textContent = "🌙";
   darkModeBtn.style.setProperty("font-size", "28px");
   darkModeBtn.setAttribute("aria-label", "Switch to dark mode");
@@ -24,6 +26,8 @@ const darkMode = () => {
   document.documentElement.style.setProperty("--accent-color", "#251313");
   document.documentElement.style.setProperty("--accent-text-color", "#f3e8df");
   document.documentElement.style.setProperty("--button-hover-text-color", "#442827");
+  document.documentElement.style.setProperty("--disabled-bg", "color-mix(in srgb, var(--bg-color) 70%, var(--text-color) 30%)");
+  document.documentElement.style.setProperty("--disabled-text", "var(--text-color)");
   darkModeBtn.textContent = "☀️";
   darkModeBtn.style.setProperty("font-size", "30px");
   darkModeBtn.setAttribute("aria-label", "Switch to light mode");
