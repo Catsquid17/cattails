@@ -1,23 +1,21 @@
 ---
 layout: default
 title: Coat File to NPC Coat
-css_path: ../css/styles.css
+path_level: ../
 ---
 
 <main>
-  <div class="row mb-3 mx-5" id="secret-container">
-    <h1 class="text-center">Coat File to NPC Coat</h1>
-    <section>
-      <p>
-        For creating modded NPCs. Upload a color file and it will convert it into code for a modded NPC's .meta. Does not generate a complete file, please paste in the appropriate spot in your mod file. Colors can be found at
-        C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\colors. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.
-      </p>
-      <br />
-      <input id="user-color" type="file" accept="image/png" class="" />
-      <button type="button" disabled="true" id="convert">Convert</button>
-      <button type="button" disabled="true" id="copy">Copy</button>
-      <pre id="result"></pre>
-    </section>
-  </div>
+  <h1>Coat File to NPC Coat</h1>
+  <section>
+    <p>
+      For creating modded NPCs. Upload a color file and it will convert it into code for a modded NPC's .meta. Does not generate a complete file, please paste in the appropriate spot in your mod file. Colors can be found at
+      C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\colors. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.
+    </p>
+    <br />
+    <input id="user-color" type="file" accept="image/png" class="" />
+    <button type="button" disabled="true" id="convert">Convert</button>
+    <button type="button" disabled="true" id="copy">Copy</button>
+    <pre id="result"></pre>
+  </section>
 </main>
 <script type="module" src="../js/tools/pelttotext.js"></script>

@@ -4,16 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page.title }} | Catsquid's Cattails Stuff</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-    <link href="{{ page.css_path }}" rel="stylesheet" />
-    {{ page.custom_css_element }}
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="{{ page.path_level }}css/styles.css" rel="stylesheet" />
+    <link href="{{ page.custom_css_path }}" rel="stylesheet" />
   </head>
 
   <body>
-    <div class="content-wrapper">{% include header.html %} {{ content }}</div>
-    {% include footer.html %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    {% include header.html %} {{ content }} {% include footer.html %}
+    <script src="{{ page.path_level }}js/darkmode.js"></script>
   </body>
 </html>
-

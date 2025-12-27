@@ -22,14 +22,12 @@ PageBuilder.prototype.homePage = function () {
   start.innerHTML = "Start";
   start.classList.remove("next");
   settings.addEventListener("click", () => this.settingsPage());
-  instructions.innerHTML = "Instructions"
+  instructions.innerHTML = "Instructions";
   instructions.setAttribute("href", "https://catsquid17.github.io/cattails/secret/instructions.html");
-  instructions.classList.add("btn");
-  instructions.classList.add("btn-primary");
-  changelog.innerHTML = "Changelog"
+  instructions.classList.add("link-button");
+  changelog.innerHTML = "Changelog";
   changelog.setAttribute("href", "https://catsquid17.github.io/cattails/secret/changelog.html");
-  changelog.classList.add("btn");
-  changelog.classList.add("btn-primary");
+  changelog.classList.add("link-button");
 
   let menu = document.createElement("ul");
   menu.setAttribute("id", "button-list");

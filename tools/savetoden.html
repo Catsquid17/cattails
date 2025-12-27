@@ -1,24 +1,22 @@
 ---
 layout: default
 title: Save File to NPC Den
-css_path: ../css/styles.css
+path_level: ../
 ---
 
 <main>
-  <div class="row mb-3 mx-5" id="secret-container">
-    <h1 class="text-center">Save File to NPC Den</h1>
-    <section>
-      <p>
-        For creating modded NPCs. Upload a save file and it will convert the den on that file into code for a modded den. Does not generate a complete file, please paste in the appropriate spot in your mod file. Saves can be found at
-        C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\saves. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.
-      </p>
-      <br />
-      <input id="user-file" type="file" accept=".sav" /><br />
-      <span id="file-message"></span><br />
-      <button type="button" disabled="true" id="convert">Convert</button>
-      <button type="button" disabled="true" id="copy">Copy</button>
-      <pre id="result"></pre>
-    </section>
-  </div>
+  <h1>Save File to NPC Den</h1>
+  <section>
+    <p>
+      For creating modded NPCs. Upload a save file and it will convert the den on that file into code for a modded den. Does not generate a complete file, please paste in the appropriate spot in your mod file. Saves can be found at
+      C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\saves. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.
+    </p>
+    <br />
+    <input id="user-file" type="file" accept=".sav" /><br />
+    <span id="file-message"></span><br />
+    <button type="button" disabled="true" id="convert">Convert</button>
+    <button type="button" disabled="true" id="copy">Copy</button>
+    <pre id="result"></pre>
+  </section>
 </main>
 <script type="module" src="../js/tools/savetoden.js"></script>

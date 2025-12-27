@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Rugs",
+    "release_date": "08/19/2022",
+    "last_updated": "08/19/2022",
+    "version": "1",
+    "category": "Furniture",
+    "cover_image": "rugs-cover.png",
+    "short_description": "Rugs that come in 12 colors and 2 sizes.",
+    "long_description": "I noticed there weren't many rugs in the game, so I made these!\nThis rug comes in red, orange, yellow, green, light blue, dark blue, purple, pink, brown, white, gray, and black. It has a large size (the size of the vanilla Fancy Rug) and a small size (the size of the vanilla Circular Rug).\nYou'll have to rotate the item to get some colors.",
+    "nexus_id": "2",
+    "google_drive": ["1GxS-rdKkE-J0LV6A40TjQHhqlOTY5fDq", "100Heam4pxKSENcxmJ2rd-gRTsOSp0Jia"],
+    "drive_names": ["Large rugs", "Small rugs"],
+    "preview_images": ["rugs-1.png", "rugs-2.png", "rugs-3.gif"],
+    "page_name": "rugs.html"
+  }
+]
