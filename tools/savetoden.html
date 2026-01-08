@@ -7,12 +7,9 @@ path_level: ../
 <main>
   <h1>Save File to NPC Den</h1>
   <section>
-    <p>
-      For creating modded NPCs. Upload a save file and it will convert the den on that file into code for a modded den. Does not generate a complete file, please paste in the appropriate spot in your mod file. Saves can be found at
-      C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\saves. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.
-    </p>
+    <p>For creating modded NPCs. Upload a save file and it will convert the den on that file into code for a modded den. Does not generate a complete file, please paste in the appropriate spot in your mod file. Saves can be found at C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\saves. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.</p>
     <br />
-    <input id="user-file" type="file" accept=".sav" /><br />
+    <label for="user-file">Save file: </label><input id="user-file" type="file" accept=".sav" /><br />
     <span id="file-message"></span><br />
     <button type="button" disabled="true" id="convert">Convert</button>
     <button type="button" disabled="true" id="copy">Copy</button>

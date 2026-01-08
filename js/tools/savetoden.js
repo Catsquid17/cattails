@@ -99,7 +99,6 @@ class Converter {
 
   determineStyles() {
     let styleList = this.save.den_styles;
-    let value = 1; //value to search for
 
     //NPC dens can only use one style. Pick the most used one.
     //rarely, style1 and style2 may look the same if the player set it up that way. take this into account when counting style usage.

@@ -1,20 +1,20 @@
-export { PageBuilder }
+export { PageBuilder };
 
 class PageBuilder {
-  constructor() {
-    this.globalSettings = {"den": "Default", "create": "Yes", "parent": "Bio"};
+  constructor(dataFiles) {
+    this.globalSettings = { den: "Default", create: "Yes", parent: "Bio" };
     this.currentPage = "home"; //home -> upload -> questions -> download; home -> settings; home -> instructions;
-    this.heir = 0;
-    this.relatives = [];
+    this.heir = null;
+    this.globalRelatives = [];
     this.contentArea = document.querySelector("#content");
     this.save = '{"key": "value"}';
     this.colors = [];
+    this.objectsToBuild = [];
+    this.dataFiles = dataFiles; //object with all JSON templates (meta, lang, etc) and images the program will need
   }
   createButton = (direction) => {
     let button = document.createElement("button");
     button.setAttribute("type", "button");
-    button.classList.add("btn");
-    button.classList.add("btn-primary");
     if (direction == "next") {
       button.classList.add("next");
       button.innerHTML = "Next >";
@@ -39,7 +39,7 @@ class PageBuilder {
           this.questionsPage();
           break;
         case "questions":
-          this.updateData();
+          //this.updateData(); called manually because of the order things have to process in upon leaving this page
           this.downloadPage();
           break;
         default:
@@ -72,10 +72,13 @@ class PageBuilder {
       this.globalSettings.create = document.querySelector('[name="setting-2"]:checked').value;
       this.globalSettings.parent = document.querySelector('[name="setting-3"]:checked').value;
     } else if (this.currentPage == "questions") {
-      this.heir = document.querySelector('[name="heir"]:checked').value;
-      this.relatives = Array.from(document.querySelectorAll('[name="relatives"]:checked')).map(element => element.value);
-      console.log(this.heir);
-      console.log(this.relatives);
+      this.heir = document.querySelector('[name="heir"]:checked').value.toLowerCase();
+      this.globalRelatives = Array.from(document.querySelectorAll('[name="relatives"]:checked')).map((element) => element.value);
+      for (let i in this.globalRelatives) {
+        this.globalRelatives[i] = this.globalRelatives[i].toLowerCase();
+      }
+      console.log(`The heir has been set to ${this.heir}`);
+      console.log(`The relatives have been set to ${this.globalRelatives}`);
     }
   };
   reset = () => {
@@ -83,5 +86,5 @@ class PageBuilder {
     this.relatives = [];
     this.save = '{"key": "value"}';
     this.colors = [];
-  }
+  };
 }

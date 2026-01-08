@@ -1,0 +1,21 @@
+---
+layout: default
+title: Save File to NPC Den
+path_level: ../
+---
+
+<main>
+  <h1>Save File to NPC Den</h1>
+  <section>
+    <p>For editing or obtaining preexisting dens. Upload a save file and a .region file and it will replace the den from the save file with the den from the region file. Saves can be found at C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\saves. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it. Region files can be found in mods or in the gameresources folder at C:\Program&nbsp;Files&nbsp;(x86)\Steam\steamapps\common\Cattails&nbsp;Wildwood&nbsp;Story\gameresources\map</p>
+    <br />
+    <label for="user-file">Save file: </label><input id="user-file" type="file" accept=".sav" /><br />
+    <span id="file-message"></span><br />
+    <label for="user-region-file">Region file: </label><input id="user-region-file" type="file" accept=".region" /><br />
+    <span id="region-file-message"></span><br />
+    <button type="button" disabled="true" id="convert">Convert</button>
+    <button type="button" disabled="true" id="copy">Copy</button>
+    <pre id="result"></pre>
+  </section>
+</main>
+<script type="module" src="../js/tools/dentosave.js"></script>

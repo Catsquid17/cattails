@@ -1,5 +1,4 @@
 const darkModeBtn = document.getElementById("dark-mode");
-const darkModeBtnNav = document.getElementById("dark-mode-nav");
 localStorage.theme = localStorage.theme == null ? "light" : localStorage.theme; //use theme if one is stored, otherwise default to light mode
 
 //https://stackoverflow.com/questions/41370741/how-do-i-edit-a-css-variable-using-js
@@ -54,9 +53,6 @@ const loadMode = () => {
 };
 
 darkModeBtn.addEventListener("click", () => {
-  swapModes();
-});
-darkModeBtnNav.addEventListener("click", () => {
   swapModes();
 });
 

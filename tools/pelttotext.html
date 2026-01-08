@@ -7,12 +7,9 @@ path_level: ../
 <main>
   <h1>Coat File to NPC Coat</h1>
   <section>
-    <p>
-      For creating modded NPCs. Upload a color file and it will convert it into code for a modded NPC's .meta. Does not generate a complete file, please paste in the appropriate spot in your mod file. Colors can be found at
-      C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\colors. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.
-    </p>
+    <p>For creating modded NPCs. Upload a color file and it will convert it into code for a modded NPC's .meta. Does not generate a complete file, please paste in the appropriate spot in your mod file. Colors can be found at C:\Users\YOUR&nbsp;USERNAME\AppData\Local\Cattails_Wildwood_Story\colors. AppData is a hidden folder, press CTRL+R and enter %APPDATA% to get to it.</p>
     <br />
-    <input id="user-color" type="file" accept="image/png" class="" />
+    <label for="user-color">Color file: </label><input id="user-color" type="file" accept="image/png" class="" />
     <button type="button" disabled="true" id="convert">Convert</button>
     <button type="button" disabled="true" id="copy">Copy</button>
     <pre id="result"></pre>
