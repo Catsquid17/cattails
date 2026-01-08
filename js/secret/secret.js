@@ -63,7 +63,7 @@ const loadFiles = async () => {
 
   //for each path i have defined
   for (let path of paths) {
-    const res = await fetch(`data/${path}`); //fetch the item at that path, store the data/response
+    const res = await fetch(`/cattails/data/secret/${path}`); //fetch the item at that path, store the data/response
 
     let fileContent = null;
     if (path.endsWith(".png")) {
