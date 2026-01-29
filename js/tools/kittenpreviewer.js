@@ -205,9 +205,9 @@ window.onload = async function () {
 
 const loadFiles = async () => {
   //PRODUCTION:
-  //let prefix = "cattails/";
+  let prefix = "../../cattails/";
   //FOR LOCAL TESTING:
-  let prefix = "../../";
+  //let prefix = "../../";
   let paths = ["pelt_data.json", "eye_data.json", "inner_ear.png"];
   for (let part of partNames) {
     paths.push(`${part}.png`);
