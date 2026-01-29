@@ -1,0 +1,539 @@
+---
+layout: default
+title: Kitten Previwer
+path_level: ../
+---
+
+<main>
+  <h1>Kitten Previwer</h1>
+  <section>
+    <p>For Cattails (2017). Select two coats and eye colors to preview what their kittens would look like. Not all combinations are possible in-game. Many of these colors are unreleased or unobtainable.</p>
+    <br />
+    <label for="one">Choose a coat color for parent one:</label>
+    <select id="one">
+      <optgroup label="Forest Colony NPCs">
+        <option value="mayor">Mayor</option>
+        <option value="sarge">Sarge</option>
+        <option value="doc">Doc</option>
+        <option value="o-tabby">Ember</option>
+        <option value="br-tiger">Scout</option>
+        <option value="missy">Missy</option>
+        <option value="lyrus">Lyrus</option>
+      </optgroup>
+      <optgroup label="Mountain Domain NPCs">
+        <option value="leo">Leo</option>
+        <option value="jag">Jag</option>
+        <option value="siamese">Luna</option>
+        <option value="delta">Delta</option>
+        <option value="arthur">Arthur</option>
+        <option value="robin">Robin</option>
+        <option value="gray">Pebble</option>
+      </optgroup>
+      <optgroup label="Mystic Colony NPCs">
+        <option value="alisa">Alisa</option>
+        <option value="tortoise">Oracle</option>
+        <option value="krampus">Krampy</option>
+        <option value="bengal">Savannah</option>
+        <option value="nil">Nil</option>
+        <option value="black">Slip</option>
+        <option value="mossy">Mossie</option>
+      </optgroup>
+      <optgroup label="Other NPCs">
+        <option value="black-white">Coco</option>
+        <option value="o-calico">Elli</option>
+      </optgroup>
+      <optgroup label="Default Colors">
+        <option value="white" selected>White</option>
+        <option value="blue">Blue</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="cream">Cream</option>
+        <option value="gray">Gray</option>
+        <option value="orange">Orange</option>
+      </optgroup>
+      <optgroup label="Ember's Exotic Emporium">
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="orng-white">Orng/White</option>
+        <option value="black-white">Black/White</option>
+        <option value="blue-white">Blue/White</option>
+        <option value="o-calico">O Calico</option>
+        <option value="o-tabby">O Tabby</option>
+        <option value="lt-o-tabby">Lt O Tabby</option>
+        <option value="br-tiger">Br Tiger</option>
+        <option value="ticked-gray">Ticked Gray</option>
+      </optgroup>
+      <optgroup label="Delta's Guaranteed Goods">
+        <option value="sand">Sand</option>
+        <option value="navy">Navy</option>
+        <option value="gray-white">Gray/White</option>
+        <option value="sand-white">Sand/White</option>
+        <option value="s-tabby">S Tabby</option>
+        <option value="trts-white">Trts/White</option>
+        <option value="tortoise">Tortoise</option>
+        <option value="mottled-b">Mottled B</option>
+        <option value="blue-ts">Blue Ts</option>
+      </optgroup>
+      <optgroup label="Savannah's Shoppe">
+        <option value="cinnamon">Cinnamon</option>
+        <option value="yellow">Yellow</option>
+        <option value="caramel">Caramel</option>
+        <option value="brown">Brown</option>
+        <option value="cinmn-white">Cinmn/White</option>
+        <option value="ticked-brwn">Ticked Brwn</option>
+        <option value="gold-tabby">Gold Tabby</option>
+        <option value="bee-tabby">Bee Tabby</option>
+        <option value="calicomania">Calicomania</option>
+      </optgroup>
+      <optgroup label="Peanut's Trading Post">
+        <option value="orng-cream">Orng Cream</option>
+        <option value="ruddy">Ruddy</option>
+        <option value="zebra">Zebra</option>
+        <option value="umbra">Umbra</option>
+        <option value="pink-tabby">Pink Tabby</option>
+        <option value="ticked-crm">Ticked Crm</option>
+        <option value="regal">Regal</option>
+        <option value="dark-clco">Dark Clco</option>
+      </optgroup>
+      <optgroup label="Molo's Mole Cash Shop">
+        <option value="cowhide">Cowhide</option>
+        <option value="mottled-wh">Mottled Wh</option>
+        <option value="siamese">Siamese</option>
+        <option value="black-clco">Black Clco</option>
+      </optgroup>
+      <optgroup label="Molu's Mole Cash Shop">
+        <option value="pink">Pink</option>
+        <option value="pink-white">Pink/White</option>
+        <option value="candy">Candy</option>
+        <option value="fiery-brwn">Fiery Brwn</option>
+      </optgroup>
+      <optgroup label="Molay's Mole Cash Shop">
+        <option value="frost">Frost</option>
+        <option value="frost-white">Frost/White</option>
+        <option value="frst-tabby">Frst Tabby</option>
+        <option value="seafoam">Seafoam</option>
+      </optgroup>
+      <optgroup label="Festivals">
+        <option value="sunbeam">Sunbeam</option>
+        <option value="sun-tabby">Sun Tabby</option>
+        <option value="pumpkin">Pumpkin</option>
+        <option value="silhouette">Silhouette</option>
+        <option value="snowday">Snowday</option>
+        <option value="glacier">Glacier</option>
+        <option value="pastels">Pastels</option>
+        <option value="painted">Painted</option>
+      </optgroup>
+      <optgroup label="Task Board">
+        <option value="wind-tabby">Wind Tabby</option>
+        <option value="indigo">Indigo</option>
+        <option value="daffodil">Daffodil</option>
+        <option value="basil">Basil</option>
+        <option value="neon">Neon</option>
+        <option value="ghost">Ghost</option>
+        <option value="rainbow">Rainbow</option>
+      </optgroup>
+      <optgroup label="Special">
+        <option value="guardian">Guardian</option>
+        <option value="smoky-blue">Smoky Blue</option>
+        <option value="burnt-tby">Burnt Tby</option>
+        <option value="watermelon">Watermelon</option>
+        <option value="swiss">Swiss</option>
+        <option value="kickstarter">Kickstarter</option>
+        <option value="black-tabby">Black Tabby</option>
+        <option value="o-bengal">O Bengal</option>
+        <option value="popcon">Popcon</option>
+      </optgroup>
+      <optgroup label="Promo Codes">
+        <option value="aurora">Aurora</option>
+        <option value="bl-bengal">Bl Bengal</option>
+        <option value="blank">Blank</option>
+        <option value="blood-tiger">Blood Tiger</option>
+        <option value="blue-bengal">Blue Bengal</option>
+        <option value="blue-gray">Blue Gray</option>
+        <option value="buebi">Buebi</option>
+        <option value="choc-bengal">Choc Bengal</option>
+        <option value="constlation">Constlation</option>
+        <option value="cream-tby">Cream Tby</option>
+        <option value="cyan-tint">Cyan Tint</option>
+        <option value="dark-purple">Dark Purple</option>
+        <option value="delta">Delta</option>
+        <option value="dobby">Dobby</option>
+        <option value="hacker">Hacker</option>
+        <option value="jo">Jo</option>
+        <option value="kodiak">Kodiak</option>
+        <option value="lilac-point">Lilac Point</option>
+        <option value="lvndr-lynx">Lvndr Lynx</option>
+        <option value="mossy">Mossy</option>
+        <option value="penny">Penny</option>
+        <option value="peppermint">Peppermint</option>
+        <option value="phoenix">Phoenix</option>
+        <option value="pink-bengal">Pink Bengal</option>
+        <option value="pink-stripes">Pink Stripes</option>
+        <option value="pirrone">Pirrone</option>
+        <option value="ptchy-calico">Ptchy Calico</option>
+        <option value="snow-bengal">Snow Bengal</option>
+        <option value="starry-pelt">Starry Pelt</option>
+      </optgroup>
+      <optgroup label="Unreleased Promo">
+        <option value="bad-weather">Bad Weather</option>
+        <option value="beef">Beef</option>
+        <option value="bengal">Bengal</option>
+        <option value="bl-siamese">Bl Siamese</option>
+        <option value="boots">Boots</option>
+        <option value="cafe">Cafe</option>
+        <option value="camocat">Camocat</option>
+        <option value="casey">Casey</option>
+        <option value="chimera">Chimera</option>
+        <option value="cute-tabby">Cute Tabby</option>
+        <option value="dilute-ts">Dilute Ts</option>
+        <option value="fire-bengal">Fire Bengal</option>
+        <option value="flame">Flame</option>
+        <option value="fluffeh">Fluffeh</option>
+        <option value="garlic">Garlic</option>
+        <option value="gus">Gus</option>
+        <option value="jasper">Jasper</option>
+        <option value="krampus">Krampus</option>
+        <option value="krone">Krone</option>
+        <option value="lynx-point">Lynx Point</option>
+        <option value="pearl">Pearl</option>
+        <option value="possum-tby">Possum Tby</option>
+        <option value="red-c-tby">Red C Tby</option>
+        <option value="red-fr-wlk">Red Fr Wlk</option>
+        <option value="roland">Roland</option>
+        <option value="ruru">Ruru</option>
+        <option value="salt-pepper">Salt Pepper</option>
+        <option value="sentry">Sentry</option>
+        <option value="shadow">Shadow</option>
+        <option value="slate">Slate</option>
+        <option value="stratus">Stratus</option>
+        <option value="stripe">Stripe</option>
+        <option value="sun-cloak">Sun Cloak</option>
+        <option value="tamale">Tamale</option>
+        <option value="violetrose">Violetrose</option>
+        <option value="wegie">Wegie</option>
+      </optgroup>
+    </select>
+    <label for="two">Choose a coat color for parent two:</label>
+    <select id="two">
+      <optgroup label="Forest Colony NPCs">
+        <option value="mayor">Mayor</option>
+        <option value="sarge">Sarge</option>
+        <option value="doc">Doc</option>
+        <option value="o-tabby">Ember</option>
+        <option value="br-tiger">Scout</option>
+        <option value="missy">Missy</option>
+        <option value="lyrus">Lyrus</option>
+      </optgroup>
+      <optgroup label="Mountain Domain NPCs">
+        <option value="leo">Leo</option>
+        <option value="jag">Jag</option>
+        <option value="siamese">Luna</option>
+        <option value="delta">Delta</option>
+        <option value="arthur">Arthur</option>
+        <option value="robin">Robin</option>
+        <option value="gray">Pebble</option>
+      </optgroup>
+      <optgroup label="Mystic Colony NPCs">
+        <option value="alisa">Alisa</option>
+        <option value="tortoise">Oracle</option>
+        <option value="krampus">Krampy</option>
+        <option value="bengal">Savannah</option>
+        <option value="nil">Nil</option>
+        <option value="black">Slip</option>
+        <option value="mossy">Mossie</option>
+      </optgroup>
+      <optgroup label="Other NPCs">
+        <option value="black-white">Coco</option>
+        <option value="o-calico">Elli</option>
+      </optgroup>
+      <optgroup label="Default Colors">
+        <option value="white" selected>White</option>
+        <option value="blue">Blue</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="cream">Cream</option>
+        <option value="gray">Gray</option>
+        <option value="orange">Orange</option>
+      </optgroup>
+      <optgroup label="Ember's Exotic Emporium">
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="orng-white">Orng/White</option>
+        <option value="black-white">Black/White</option>
+        <option value="blue-white">Blue/White</option>
+        <option value="o-calico">O Calico</option>
+        <option value="o-tabby">O Tabby</option>
+        <option value="lt-o-tabby">Lt O Tabby</option>
+        <option value="br-tiger">Br Tiger</option>
+        <option value="ticked-gray">Ticked Gray</option>
+      </optgroup>
+      <optgroup label="Delta's Guaranteed Goods">
+        <option value="sand">Sand</option>
+        <option value="navy">Navy</option>
+        <option value="gray-white">Gray/White</option>
+        <option value="sand-white">Sand/White</option>
+        <option value="s-tabby">S Tabby</option>
+        <option value="trts-white">Trts/White</option>
+        <option value="tortoise">Tortoise</option>
+        <option value="mottled-b">Mottled B</option>
+        <option value="blue-ts">Blue Ts</option>
+      </optgroup>
+      <optgroup label="Savannah's Shoppe">
+        <option value="cinnamon">Cinnamon</option>
+        <option value="yellow">Yellow</option>
+        <option value="caramel">Caramel</option>
+        <option value="brown">Brown</option>
+        <option value="cinmn-white">Cinmn/White</option>
+        <option value="ticked-brwn">Ticked Brwn</option>
+        <option value="gold-tabby">Gold Tabby</option>
+        <option value="bee-tabby">Bee Tabby</option>
+        <option value="calicomania">Calicomania</option>
+      </optgroup>
+      <optgroup label="Peanut's Trading Post">
+        <option value="orng-cream">Orng Cream</option>
+        <option value="ruddy">Ruddy</option>
+        <option value="zebra">Zebra</option>
+        <option value="umbra">Umbra</option>
+        <option value="pink-tabby">Pink Tabby</option>
+        <option value="ticked-crm">Ticked Crm</option>
+        <option value="regal">Regal</option>
+        <option value="dark-clco">Dark Clco</option>
+      </optgroup>
+      <optgroup label="Molo's Mole Cash Shop">
+        <option value="cowhide">Cowhide</option>
+        <option value="mottled-wh">Mottled Wh</option>
+        <option value="siamese">Siamese</option>
+        <option value="black-clco">Black Clco</option>
+      </optgroup>
+      <optgroup label="Molu's Mole Cash Shop">
+        <option value="pink">Pink</option>
+        <option value="pink-white">Pink/White</option>
+        <option value="candy">Candy</option>
+        <option value="fiery-brwn">Fiery Brwn</option>
+      </optgroup>
+      <optgroup label="Molay's Mole Cash Shop">
+        <option value="frost">Frost</option>
+        <option value="frost-white">Frost/White</option>
+        <option value="frst-tabby">Frst Tabby</option>
+        <option value="seafoam">Seafoam</option>
+      </optgroup>
+      <optgroup label="Festivals">
+        <option value="sunbeam">Sunbeam</option>
+        <option value="sun-tabby">Sun Tabby</option>
+        <option value="pumpkin">Pumpkin</option>
+        <option value="silhouette">Silhouette</option>
+        <option value="snowday">Snowday</option>
+        <option value="glacier">Glacier</option>
+        <option value="pastels">Pastels</option>
+        <option value="painted">Painted</option>
+      </optgroup>
+      <optgroup label="Task Board">
+        <option value="wind-tabby">Wind Tabby</option>
+        <option value="indigo">Indigo</option>
+        <option value="daffodil">Daffodil</option>
+        <option value="basil">Basil</option>
+        <option value="neon">Neon</option>
+        <option value="ghost">Ghost</option>
+        <option value="rainbow">Rainbow</option>
+      </optgroup>
+      <optgroup label="Special">
+        <option value="guardian">Guardian</option>
+        <option value="smoky-blue">Smoky Blue</option>
+        <option value="burnt-tby">Burnt Tby</option>
+        <option value="watermelon">Watermelon</option>
+        <option value="swiss">Swiss</option>
+        <option value="kickstarter">Kickstarter</option>
+        <option value="black-tabby">Black Tabby</option>
+        <option value="o-bengal">O Bengal</option>
+        <option value="popcon">Popcon</option>
+      </optgroup>
+      <optgroup label="Promo Codes">
+        <option value="aurora">Aurora</option>
+        <option value="bl-bengal">Bl Bengal</option>
+        <option value="blank">Blank</option>
+        <option value="blood-tiger">Blood Tiger</option>
+        <option value="blue-bengal">Blue Bengal</option>
+        <option value="blue-gray">Blue Gray</option>
+        <option value="buebi">Buebi</option>
+        <option value="choc-bengal">Choc Bengal</option>
+        <option value="constlation">Constlation</option>
+        <option value="cream-tby">Cream Tby</option>
+        <option value="cyan-tint">Cyan Tint</option>
+        <option value="dark-purple">Dark Purple</option>
+        <option value="delta">Delta</option>
+        <option value="dobby">Dobby</option>
+        <option value="hacker">Hacker</option>
+        <option value="jo">Jo</option>
+        <option value="kodiak">Kodiak</option>
+        <option value="lilac-point">Lilac Point</option>
+        <option value="lvndr-lynx">Lvndr Lynx</option>
+        <option value="mossy">Mossy</option>
+        <option value="penny">Penny</option>
+        <option value="peppermint">Peppermint</option>
+        <option value="phoenix">Phoenix</option>
+        <option value="pink-bengal">Pink Bengal</option>
+        <option value="pink-stripes">Pink Stripes</option>
+        <option value="pirrone">Pirrone</option>
+        <option value="ptchy-calico">Ptchy Calico</option>
+        <option value="snow-bengal">Snow Bengal</option>
+        <option value="starry-pelt">Starry Pelt</option>
+      </optgroup>
+      <optgroup label="Unreleased Promo">
+        <option value="bad-weather">Bad Weather</option>
+        <option value="beef">Beef</option>
+        <option value="bengal">Bengal</option>
+        <option value="bl-siamese">Bl Siamese</option>
+        <option value="boots">Boots</option>
+        <option value="cafe">Cafe</option>
+        <option value="camocat">Camocat</option>
+        <option value="casey">Casey</option>
+        <option value="chimera">Chimera</option>
+        <option value="cute-tabby">Cute Tabby</option>
+        <option value="dilute-ts">Dilute Ts</option>
+        <option value="fire-bengal">Fire Bengal</option>
+        <option value="flame">Flame</option>
+        <option value="fluffeh">Fluffeh</option>
+        <option value="garlic">Garlic</option>
+        <option value="gus">Gus</option>
+        <option value="jasper">Jasper</option>
+        <option value="krampus">Krampus</option>
+        <option value="krone">Krone</option>
+        <option value="lynx-point">Lynx Point</option>
+        <option value="pearl">Pearl</option>
+        <option value="possum-tby">Possum Tby</option>
+        <option value="red-c-tby">Red C Tby</option>
+        <option value="red-fr-wlk">Red Fr Wlk</option>
+        <option value="roland">Roland</option>
+        <option value="ruru">Ruru</option>
+        <option value="salt-pepper">Salt Pepper</option>
+        <option value="sentry">Sentry</option>
+        <option value="shadow">Shadow</option>
+        <option value="slate">Slate</option>
+        <option value="stratus">Stratus</option>
+        <option value="stripe">Stripe</option>
+        <option value="sun-cloak">Sun Cloak</option>
+        <option value="tamale">Tamale</option>
+        <option value="violetrose">Violetrose</option>
+        <option value="wegie">Wegie</option>
+      </optgroup></select
+    ><br />
+    <label for="one-eyes">Choose an eye color for parent one:</label>
+    <select id="one-eyes">
+      <optgroup label="Player Colors">
+        <option value="red">Red</option>
+        <option value="gold">Gold</option>
+        <option value="yellow">Yellow</option>
+        <option value="emerald">Emerald</option>
+        <option value="green">Green</option>
+        <option value="blue" selected>Blue</option>
+        <option value="turquoise">Turquoise</option>
+        <option value="pink">Pink</option>
+        <option value="lavender">Lavender</option>
+        <option value="white">White</option>
+        <option value="brown">Brown</option>
+        <option value="grey">Grey</option>
+        <option value="black">Black</option>
+      </optgroup>
+      <optgroup label="Forest Colony">
+        <option value="turquoise">Mayor</option>
+        <option value="sarge">Sarge</option>
+        <option value="doc">Doc</option>
+        <option value="emerald">Ember</option>
+        <option value="scout">Scout</option>
+        <option value="missy">Missy</option>
+        <option value="lyrus">Lyrus</option>
+      </optgroup>
+      <optgroup label="Mountain Domain">
+        <option value="leo">Leo</option>
+        <option value="jag">Jag</option>
+        <option value="luna">Luna</option>
+        <option value="delta">Delta</option>
+        <option value="arthur">Arthur</option>
+        <option value="robin">Robin</option>
+        <option value="pebble">Pebble</option>
+      </optgroup>
+      <optgroup label="Mystic Colony">
+        <option value="alisa">Alisa</option>
+        <option value="alisa-r">Alisa (Right)</option>
+        <option value="oracle">Oracle</option>
+        <option value="krampy">Krampy</option>
+        <option value="savannah">Savannah</option>
+        <option value="nil">Nil</option>
+        <option value="gold">Slip</option>
+        <option value="mossie">Mossie</option>
+      </optgroup>
+      <optgroup label="Custom Colony">
+        <option value="claudius">Claudius</option>
+        <option value="galen">Galen</option>
+        <option value="peanut">Peanut</option>
+        <option value="sunshine">Sunshine</option>
+        <option value="mango">Mango</option>
+        <option value="claw">Claw</option>
+      </optgroup>
+      <optgroup label="Other">
+        <option value="coco">Coco</option>
+        <option value="elli">Elli</option>
+      </optgroup>
+    </select>
+    <label for="two-eyes">Choose an eye color for parent two:</label>
+    <select id="two-eyes">
+      <optgroup label="Player Colors">
+        <option value="red">Red</option>
+        <option value="gold">Gold</option>
+        <option value="yellow">Yellow</option>
+        <option value="emerald">Emerald</option>
+        <option value="green">Green</option>
+        <option value="blue" selected>Blue</option>
+        <option value="turquoise">Turquoise</option>
+        <option value="pink">Pink</option>
+        <option value="lavender">Lavender</option>
+        <option value="white">White</option>
+        <option value="brown">Brown</option>
+        <option value="grey">Grey</option>
+        <option value="black">Black</option>
+      </optgroup>
+      <optgroup label="Forest Colony">
+        <option value="turquoise">Mayor</option>
+        <option value="sarge">Sarge</option>
+        <option value="doc">Doc</option>
+        <option value="emerald">Ember</option>
+        <option value="scout">Scout</option>
+        <option value="missy">Missy</option>
+        <option value="lyrus">Lyrus</option>
+      </optgroup>
+      <optgroup label="Mountain Domain">
+        <option value="leo">Leo</option>
+        <option value="jag">Jag</option>
+        <option value="luna">Luna</option>
+        <option value="delta">Delta</option>
+        <option value="arthur">Arthur</option>
+        <option value="robin">Robin</option>
+        <option value="pebble">Pebble</option>
+      </optgroup>
+      <optgroup label="Mystic Colony">
+        <option value="alisa">Alisa</option>
+        <option value="alisa-r">Alisa (Right)</option>
+        <option value="oracle">Oracle</option>
+        <option value="krampy">Krampy</option>
+        <option value="savannah">Savannah</option>
+        <option value="nil">Nil</option>
+        <option value="gold">Slip</option>
+        <option value="mossie">Mossie</option>
+      </optgroup>
+      <optgroup label="Custom Colony">
+        <option value="claudius">Claudius</option>
+        <option value="galen">Galen</option>
+        <option value="peanut">Peanut</option>
+        <option value="sunshine">Sunshine</option>
+        <option value="mango">Mango</option>
+        <option value="claw">Claw</option>
+      </optgroup>
+      <optgroup label="Other">
+        <option value="coco">Coco</option>
+        <option value="elli">Elli</option>
+      </optgroup>
+    </select>
+    <br />
+    <canvas id="result"></canvas>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/fabric@5/dist/fabric.min.js"></script>
+<script type="module" src="../js/tools/kittenpreviewer.js"></script>
